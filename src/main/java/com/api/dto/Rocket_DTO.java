@@ -2,15 +2,15 @@ package com.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.Setter;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 @Data
 public class Rocket_DTO {
 
-    @NotEmpty
+    @NotNull
     @Min(1)
     protected int id;
 
@@ -88,6 +88,7 @@ public class Rocket_DTO {
     protected String rocket_type;
 
     @Data
+    @AllArgsConstructor
     public static class DimensionRocket {
         @DecimalMin(value = "0.01")
         private double meters;
@@ -96,6 +97,7 @@ public class Rocket_DTO {
     }
 
     @Data
+    @AllArgsConstructor
     public static class MassRocket {
         @Min(1)
         private long kg;
@@ -104,6 +106,7 @@ public class Rocket_DTO {
     }
 
     @Data
+    @AllArgsConstructor
     public static class PayloadWeights {
         @Pattern(regexp = "^[a-zA-Z0-9 ]*$", message = "Id must be alphanumeric or spaces")
         @Size(min = 2, max = 50)
@@ -118,9 +121,10 @@ public class Rocket_DTO {
     }
 
     @Data
+    @AllArgsConstructor
     public static class FirstStage {
         @NotEmpty
-        private boolean reusable;
+        private Boolean reusable;
         @Min(1)
         private int engines;
         @DecimalMin(value = "0.01")
@@ -131,6 +135,7 @@ public class Rocket_DTO {
         private ThrustFirstStage thrust_vacuum;
 
         @Data
+        @AllArgsConstructor
         public static class ThrustFirstStage {
             @Min(1)
             private int kn;
@@ -140,9 +145,10 @@ public class Rocket_DTO {
     }
 
     @Data
+    @AllArgsConstructor
     public static class SecondStage {
         @NotEmpty
-        private boolean reusable;
+        private Boolean reusable;
         @Min(1)
         private int engines;
         @DecimalMin(value = "0.01")
@@ -153,6 +159,7 @@ public class Rocket_DTO {
         private Payloads payloads;
 
         @Data
+        @AllArgsConstructor
         public static class ThrustSecondStage {
             @Min(1)
             private int kn;
@@ -161,17 +168,20 @@ public class Rocket_DTO {
         }
 
         @Data
+        @AllArgsConstructor
         public static class Payloads {
             @Size(min=1, max=50)
             private String option_1;
             private CompositeFairing composite_fairing;
 
             @Data
+            @AllArgsConstructor
             public static class CompositeFairing {
                 private DimensionCompositeFairing height;
                 private DimensionCompositeFairing diameter;
 
                 @Data
+                @AllArgsConstructor
                 public static class DimensionCompositeFairing {
                     @DecimalMin(value = "0.01")
                     private double meters;
@@ -183,6 +193,7 @@ public class Rocket_DTO {
     }
 
     @Data
+    @AllArgsConstructor
     public static class Engines {
         @Min(1)
         private int number;
@@ -211,6 +222,7 @@ public class Rocket_DTO {
         private int thrust_to_weight;
 
         @Data
+        @AllArgsConstructor
         public static class Isp {
             @Min(1)
             private int sea_level;
@@ -219,6 +231,7 @@ public class Rocket_DTO {
         }
 
         @Data
+        @AllArgsConstructor
         public static class ThrustEngines {
             @Min(1)
             private int kn;
@@ -228,6 +241,7 @@ public class Rocket_DTO {
     }
 
     @Data
+    @AllArgsConstructor
     public static class LandingLegs {
         @Min(1)
         private int number;
