@@ -1,65 +1,76 @@
 package com.api.controller;
 
-import com.api.dto.Rocket_DTO;
-import com.api.dto.RocketMongoId_DTO;
+import com.api.dto.RocketDto;
+import com.api.entity.SX_Rocket;
+import com.api.mapper.RocketMapper;
+import com.api.service.NetworkingService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping
 public class RocketController {
 
-    private static final String BASE_URL = "https://api.spacexdata.com/v3/rockets";
-    private final RestTemplate restTemplate;
+    private final NetworkingService networkingService;
+    private final RocketMapper rocketMapper;
 
-    public RocketController(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public RocketController(NetworkingService networkingService, RocketMapper rocketMapper) {
+        this.networkingService = networkingService;
+        this.rocketMapper = rocketMapper;
     }
 
     @GetMapping
-    public List<Rocket_DTO> getAllRockets(
-            @RequestParam(value = "id", required = false) Boolean idParam,
-            @RequestParam(value = "limit", required = false) Integer limitParam,
-            @RequestParam(value = "offset", required = false) Integer offsetParam
+    public Mono<List<RocketDto>> getAllRockets(
+            @RequestParam(value = "id", required = false, defaultValue = "false") Boolean idParam,
+            @RequestParam(value = "limit", required = false, defaultValue = "0") Integer limitParam,
+            @RequestParam(value = "offset", required = false, defaultValue = "0") Integer offsetParam
     ) {
-        Rocket_DTO[] rockets = restTemplate.getForObject(BASE_URL, Rocket_DTO[].class);
-        Rocket_DTO[] rocketsMongoId = restTemplate.getForObject(BASE_URL, RocketMongoId_DTO[].class);
-
-        if (Boolean.TRUE.equals(idParam) && rocketsMongoId != null) {
-            List<Rocket_DTO> rocketsMongoIdList = Arrays.asList(rocketsMongoId);
-            return filterByParams(rocketsMongoIdList, limitParam, offsetParam);
-        }
-        if (rockets != null) {
-            List<Rocket_DTO> rocketList = Arrays.asList(rockets);
-            return filterByParams(rocketList, limitParam, offsetParam);
-        }
-
-        return Collections.emptyList();
+        Flux<SX_Rocket> rocketFlux = networkingService.getRockets();
+        return rocketFlux.collectList()
+                .map(rockets -> {
+                    List<RocketDto> rocketDtoList;
+                    if(idParam) {
+                        rocketDtoList = rockets.stream()
+                                .map(rocketMapper::toDtoRocketMongoId)
+                                .collect(Collectors.toList());
+                    } else {
+                        rocketDtoList = rockets.stream()
+                                .map(rocketMapper::toDtoRocket)
+                                .collect(Collectors.toList());
+                    }
+                    return filterByParams(rocketDtoList, limitParam, offsetParam);
+        });
     }
 
     @GetMapping("/{rocket_id}")
-    public Rocket_DTO getRocketById(@PathVariable("rocket_id") String rocketId,
-                                    @RequestParam(value = "id", required = false) Boolean idParam) {
-        if(Boolean.TRUE.equals(idParam)) {
-            return restTemplate.getForObject(BASE_URL + "/" + rocketId, RocketMongoId_DTO.class);
-        }
-        return restTemplate.getForObject(BASE_URL + "/" + rocketId, Rocket_DTO.class);
+    public Mono<RocketDto> getRocketById(@PathVariable("rocket_id") String rocketId,
+                                         @RequestParam(value = "id", required = false, defaultValue = "false") Boolean idParam) {
+
+        Mono<SX_Rocket> rocketFlux = networkingService.getRocket(rocketId);
+
+        return rocketFlux.map(rocket -> {
+            if(idParam) {
+                return rocketMapper.toDtoRocketMongoId(rocket);
+            } else {
+                return rocketMapper.toDtoRocket(rocket);
+            }
+        });
     }
 
-    private List<Rocket_DTO> filterByParams(List<Rocket_DTO> rocketList, Integer limitParam, Integer offsetParam) {
-        if (limitParam != null && limitParam > 0) {
+    private List<RocketDto> filterByParams(List<RocketDto> rocketList, Integer limitParam, Integer offsetParam) {
+       if (limitParam != null && limitParam > 0) {
             return rocketList.stream().limit(limitParam).toList();
-        }
+       }
         if (offsetParam != null && offsetParam > 0) {
-            return rocketList.stream().skip(offsetParam).toList();
+           return rocketList.stream().skip(offsetParam).toList();
         }
         return rocketList;
     }
