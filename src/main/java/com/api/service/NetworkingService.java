@@ -1,8 +1,9 @@
 package com.api.service;
 
-import com.api.config.RocketConfig;
 import com.api.entity.SX_Rocket;
 import com.api.utility.UriResolver;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -11,21 +12,29 @@ import reactor.core.publisher.Mono;
 import java.net.URI;
 
 @Service
+@PropertySource("classpath:application.properties")
 public class NetworkingService {
 
-    private final WebClient webClient;
-    private final RocketConfig rocketConfig;
+    @Value("${rocket.api.base-url}")
+    private String getBaseUrl;
 
-    public NetworkingService(WebClient.Builder webClientBuilder, RocketConfig rocketConfig) {
-        this.webClient = webClientBuilder.baseUrl(rocketConfig.getBaseUrl()).build();
-        this.rocketConfig = rocketConfig;
+    @Value("${rocket.api.default-limit}")
+    private int getDefaultLimit;
+
+    @Value("${rocket.api.default-offset}")
+    private int getDefaultOffset;
+
+    private final WebClient webClient;
+
+    public NetworkingService(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl(getBaseUrl).build();
     }
 
     public Flux<SX_Rocket> getRockets(Integer limit, Integer offset) {
-        int usedLimit = (limit != null) ? limit : rocketConfig.getDefaultLimit();
-        int usedOffset = (offset != null) ? offset : rocketConfig.getDefaultOffset();
+        int usedLimit = (limit != null) ? limit : getDefaultLimit;
+        int usedOffset = (offset != null) ? offset : getDefaultOffset;
 
-        URI uri = UriResolver.buildUri(rocketConfig.getBaseUrl(), "/", Integer.toString(usedLimit), Integer.toString(usedOffset));
+        URI uri = UriResolver.buildUri(getBaseUrl, "/", Integer.toString(usedLimit), Integer.toString(usedOffset));
         return webClient.get()
                 .uri(uri)
                 .retrieve()
