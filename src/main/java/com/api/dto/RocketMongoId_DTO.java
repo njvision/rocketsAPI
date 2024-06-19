@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.Pattern;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class RocketMongoId_DTO extends Rocket_DTO {
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Pattern(regexp = "^[a-zA-Z0-9 ]*$", message = "Id must be alphanumeric or spaces")
     private String _id;
 
     public RocketMongoId_DTO(String mongoId, Rocket_DTO rocketDTO) {
