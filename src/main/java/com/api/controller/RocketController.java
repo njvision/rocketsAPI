@@ -29,11 +29,11 @@ public class RocketController {
 
     @GetMapping
     public Mono<List<RocketDto>> getAllRockets(
-            @RequestParam(value = "id", required = false, defaultValue = "false") Boolean idParam,
-            @RequestParam(value = "limit", required = false, defaultValue = "0") Integer limitParam,
-            @RequestParam(value = "offset", required = false, defaultValue = "0") Integer offsetParam
+            @RequestParam(value = "id", required = false) Boolean idParam,
+            @RequestParam(value = "limit", required = false) Integer limitParam,
+            @RequestParam(value = "offset", required = false) Integer offsetParam
     ) {
-        Flux<SX_Rocket> rocketFlux = networkingService.getRockets();
+        Flux<SX_Rocket> rocketFlux = networkingService.getRockets(limitParam, offsetParam);
         return rocketFlux.collectList()
                 .map(rockets -> {
                     List<RocketDto> rocketDtoList;
@@ -52,7 +52,7 @@ public class RocketController {
 
     @GetMapping("/{rocket_id}")
     public Mono<RocketDto> getRocketById(@PathVariable("rocket_id") String rocketId,
-                                         @RequestParam(value = "id", required = false, defaultValue = "false") Boolean idParam) {
+                                         @RequestParam(value = "id", required = false) Boolean idParam) {
 
         Mono<SX_Rocket> rocketFlux = networkingService.getRocket(rocketId);
 
