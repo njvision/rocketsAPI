@@ -1,6 +1,6 @@
 package com.api.service;
 
-import com.api.entity.SX_Rocket;
+import com.api.entity.SxRocket;
 import com.api.utility.UriResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -30,7 +30,7 @@ public class NetworkingService {
         this.webClient = webClientBuilder.baseUrl(getBaseUrl).build();
     }
 
-    public Flux<SX_Rocket> getRockets(Integer limit, Integer offset) {
+    public Flux<SxRocket> getRockets(Integer limit, Integer offset) {
         int usedLimit = (limit != null) ? limit : getDefaultLimit;
         int usedOffset = (offset != null) ? offset : getDefaultOffset;
 
@@ -38,13 +38,13 @@ public class NetworkingService {
         return webClient.get()
                 .uri(uri)
                 .retrieve()
-                .bodyToFlux(SX_Rocket.class);
+                .bodyToFlux(SxRocket.class);
     }
 
-    public Mono<SX_Rocket> getRocket(String rocketId) {
+    public Mono<SxRocket> getRocket(String rocketId) {
         return webClient.get()
                 .uri("/{rocket_id}", rocketId)
                 .retrieve()
-                .bodyToMono(SX_Rocket.class);
+                .bodyToMono(SxRocket.class);
     }
 }

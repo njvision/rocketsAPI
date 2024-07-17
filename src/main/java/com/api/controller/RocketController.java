@@ -1,7 +1,7 @@
 package com.api.controller;
 
 import com.api.dto.RocketDto;
-import com.api.entity.SX_Rocket;
+import com.api.entity.SxRocket;
 import com.api.mapper.RocketMapper;
 import com.api.service.NetworkingService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +33,7 @@ public class RocketController {
             @RequestParam(value = "limit", required = false) Integer limitParam,
             @RequestParam(value = "offset", required = false) Integer offsetParam
     ) {
-        Flux<SX_Rocket> rocketFlux = networkingService.getRockets(limitParam, offsetParam);
+        Flux<SxRocket> rocketFlux = networkingService.getRockets(limitParam, offsetParam);
         return rocketFlux.collectList()
                 .map(rockets -> {
                     List<RocketDto> rocketDtoList;
@@ -54,7 +54,7 @@ public class RocketController {
     public Mono<RocketDto> getRocketById(@PathVariable("rocket_id") String rocketId,
                                          @RequestParam(value = "id", required = false) Boolean idParam) {
 
-        Mono<SX_Rocket> rocketFlux = networkingService.getRocket(rocketId);
+        Mono<SxRocket> rocketFlux = networkingService.getRocket(rocketId);
 
         return rocketFlux.map(rocket -> {
             if(idParam) {

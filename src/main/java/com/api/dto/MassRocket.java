@@ -3,12 +3,11 @@ package com.api.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
-public class RocketMongoIdDto extends RocketDto {
-
-    private String _id;
+public class MassRocket {
+    private long kg;
+    private long lb;
 }
