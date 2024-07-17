@@ -6,8 +6,8 @@ import java.net.URI;
 
 public class UriResolver {
 
-    public static URI buildUri(String basePath, String path, String limit, String offset) {
-        UriComponentsBuilder componentsBuilder = UriComponentsBuilder.fromHttpUrl(basePath).path(path);
+    public static URI buildUri(String path, String limit, String offset) {
+        UriComponentsBuilder componentsBuilder = UriComponentsBuilder.fromPath(path);
 
         if(limit != null) {
             componentsBuilder.queryParam("limit", limit);

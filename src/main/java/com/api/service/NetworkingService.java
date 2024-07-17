@@ -15,8 +15,8 @@ import java.net.URI;
 @PropertySource("classpath:application.properties")
 public class NetworkingService {
 
-    @Value("${rocket.api.base-url}")
-    private String getBaseUrl;
+    @Value("${rocket.api.path}")
+    private String getPath;
 
     @Value("${rocket.api.default-limit}")
     private int getDefaultLimit;
@@ -26,15 +26,15 @@ public class NetworkingService {
 
     private final WebClient webClient;
 
-    public NetworkingService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(getBaseUrl).build();
+    public NetworkingService(WebClient webClient) {
+        this.webClient = webClient;
     }
 
     public Flux<SxRocket> getRockets(Integer limit, Integer offset) {
         int usedLimit = (limit != null) ? limit : getDefaultLimit;
         int usedOffset = (offset != null) ? offset : getDefaultOffset;
 
-        URI uri = UriResolver.buildUri(getBaseUrl, "/", Integer.toString(usedLimit), Integer.toString(usedOffset));
+        URI uri = UriResolver.buildUri(getPath, Integer.toString(usedLimit), Integer.toString(usedOffset));
         return webClient.get()
                 .uri(uri)
                 .retrieve()
