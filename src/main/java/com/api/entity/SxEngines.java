@@ -2,6 +2,7 @@ package com.api.entity;
 
 import com.api.dto.Isp;
 import com.api.dto.ThrustStage;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,15 +11,36 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class SxEngines {
+    @JsonProperty("number")
     private int number;
+
+    @JsonProperty("type")
     private String type;
+
+    @JsonProperty("version")
     private String version;
+
+    @JsonProperty("layout")
     private String layout;
-    private Isp isp;
-    private int engine_loss_max;
-    private String propellant_1;
-    private String propellant_2;
-    private SxThrustStage thrust_sea_level;
-    private SxThrustStage thrust_vacuum;
-    private int thrust_to_weight;
+
+    @JsonProperty("isp")
+    private SxIsp isp;
+
+    @JsonProperty("engine_loss_max")
+    private int engineLossMax;
+
+    @JsonProperty("propellant_1")
+    private String propellant1;
+
+    @JsonProperty("propellant_2")
+    private String propellant2;
+
+    @JsonProperty("thrust_sea_level")
+    private SxThrustStage thrustSeaLevel;
+
+    @JsonProperty("thrust_vacuum")
+    private SxThrustStage thrustVacuum;
+
+    @JsonProperty("thrust_to_weight")
+    private int thrustToWeight;
 }

@@ -1,6 +1,7 @@
 package com.api.entity;
 
 import com.api.dto.CompositeFairing;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class SxPayloads {
-    private String option_1;
-    private SxCompositeFairing composite_fairing;
+    @JsonProperty("option_1")
+    private String option1;
+
+    @JsonProperty("composite_fairing")
+    private SxCompositeFairing compositeFairing;
 }

@@ -1,5 +1,6 @@
 package com.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class Isp {
-    private int sea_level;
+
+    @JsonProperty("sea_level")
+    private int seaLevel;
+
+    @JsonProperty("vacuum")
     private int vacuum;
 }

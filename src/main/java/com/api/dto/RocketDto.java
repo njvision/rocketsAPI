@@ -1,10 +1,9 @@
 package com.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -13,27 +12,72 @@ import java.util.List;
 @Getter
 public class RocketDto {
 
+    @JsonProperty("id")
     private int id;
+
+    @JsonProperty("active")
     private Boolean active;
+
+    @JsonProperty("stages")
     private int stages;
+
+    @JsonProperty("boosters")
     private int boosters;
-    private long cost_per_launch;
-    private int success_rate_pct;
-    private String first_flight;
+
+    @JsonProperty("cost_per_launch")
+    private long costPerLaunch;
+
+    @JsonProperty("success_rate_pct")
+    private int successRatePct;
+
+    @JsonProperty("first_flight")
+    private String firstFlight;
+
+    @JsonProperty("country")
     private String country;
+
+    @JsonProperty("company")
     private String company;
+
+    @JsonProperty("height")
     private DimensionRocket height;
+
+    @JsonProperty("diameter")
     private DimensionRocket diameter;
+
+    @JsonProperty("mass")
     private MassRocket mass;
-    private List<PayloadWeights> payload_weights;
-    private FirstStage first_stage;
-    private SecondStage second_stage;
+
+    @JsonProperty("payload_weights")
+    private List<PayloadWeights> payloadWeights;
+
+    @JsonProperty("first_stage")
+    private FirstStage firstStage;
+
+    @JsonProperty("second_stage")
+    private SecondStage secondStage;
+
+    @JsonProperty("engines")
     private Engines engines;
-    private LandingLegs landing_legs;
-    private List<String> flickr_images;
+
+    @JsonProperty("landing_legs")
+    private LandingLegs landingLegs;
+
+    @JsonProperty("flickr_images")
+    private List<String> flickrImages;
+
+    @JsonProperty("wikipedia")
     private String wikipedia;
+
+    @JsonProperty("description")
     private String description;
-    private String rocket_id;
-    private String rocket_name;
-    private String rocket_type;
+
+    @JsonProperty("rocket_id")
+    private String rocketId;
+
+    @JsonProperty("rocket_name")
+    private String rocketName;
+
+    @JsonProperty("rocket_type")
+    private String rocketType;
 }
