@@ -29,35 +29,29 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface RocketMapper {
-    RocketDto toDtoRocket(SxRocket sxRocket);
+    RocketDto toDto(SxRocket sxRocket);
 
     RocketMongoIdDto toDtoRocketMongoId(SxRocket sxRocketMongoId);
 
-    DimensionRocket toDtoDimensionRocket(SxDimensionRocket dimensionRocket);
+    DimensionRocket toDto(SxDimensionRocket dimensionRocket);
 
-    MassRocket toDtoMassRocket(SxMassRocket massRocket);
+    MassRocket toDto(SxMassRocket massRocket);
 
-    PayloadWeights toDtoPayloadWeights(SxPayloadWeights payloadWeights);
+    PayloadWeights toDto(SxPayloadWeights payloadWeights);
 
-    FirstStage toDtoFirstStage(SxFirstStage firstStage);
+    FirstStage toDto(SxFirstStage firstStage);
 
-    SecondStage toDtoSecondStage(SxSecondStage secondStage);
+    SecondStage toDto(SxSecondStage secondStage);
 
-    Engines toDtoEngines(SxEngines engines);
+    Engines toDto(SxEngines engines);
 
-    LandingLegs toDtoLandingLegs(SxLandingLegs landingLegs);
+    LandingLegs toDto(SxLandingLegs landingLegs);
 
-    Isp toDtoIsp(SxIsp isp);
+    Isp toDto(SxIsp isp);
 
-    ThrustStage toDtoThrustEngines(SxThrustStage thrustEngines);
+    ThrustStage toDto(SxThrustStage thrustEngines);
 
-    ThrustStage toDtoThrustFirstStage(SxThrustStage thrustFirstStage);
+    Payloads toDto(SxPayloads payloads);
 
-    ThrustStage toDtoThrustSecondStage(SxThrustStage thrustSecondStage);
-
-    Payloads toDtoPayloads(SxPayloads payloads);
-
-    CompositeFairing toDtoCompositeFairing(SxCompositeFairing compositeFairing);
-
-    DimensionRocket toDtoDimensionCompositeFairing(SxDimensionRocket dimensionCompositeFairing);
+    CompositeFairing toDto(SxCompositeFairing compositeFairing);
 }

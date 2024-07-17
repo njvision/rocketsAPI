@@ -32,7 +32,7 @@ public class RocketPresenter {
                                 .collect(Collectors.toList());
                     } else {
                         rocketDtoList = rockets.stream()
-                                .map(rocketMapper::toDtoRocket)
+                                .map(rocketMapper::toDto)
                                 .collect(Collectors.toList());
                     }
                     return filterByParams(rocketDtoList, limitParam, offsetParam);
@@ -46,7 +46,7 @@ public class RocketPresenter {
             if(idParam) {
                 return rocketMapper.toDtoRocketMongoId(rocket);
             } else {
-                return rocketMapper.toDtoRocket(rocket);
+                return rocketMapper.toDto(rocket);
             }
         });
     }
