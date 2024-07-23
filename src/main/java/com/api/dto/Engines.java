@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Engines {
 
     @JsonProperty("number")
-    private int number;
+    private Integer number;
 
     @JsonProperty("type")
     private String type;
@@ -26,7 +26,7 @@ public class Engines {
     private Isp isp;
 
     @JsonProperty("engine_loss_max")
-    private int engineLossMax;
+    private Integer engineLossMax;
 
     @JsonProperty("propellant_1")
     private String propellant1;
@@ -41,5 +41,5 @@ public class Engines {
     private ThrustStage thrustVacuum;
 
     @JsonProperty("thrust_to_weight")
-    private int thrustToWeight;
+    private Integer thrustToWeight;
 }

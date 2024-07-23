@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class ThrustStage {
 
     @JsonProperty("kn")
-    private int kn;
+    private Integer kn;
 
     @JsonProperty("lbf")
-    private long lbf;
+    private Integer lbf;
 }

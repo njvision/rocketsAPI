@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SxIsp {
     @JsonProperty("sea_level")
-    private int seaLevel;
+    private Integer seaLevel;
 
     @JsonProperty("vacuum")
-    private int vacuum;
+    private Integer vacuum;
 }

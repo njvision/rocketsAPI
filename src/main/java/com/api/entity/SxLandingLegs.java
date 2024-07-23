@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SxLandingLegs {
     @JsonProperty("number")
-    private int number;
+    private Integer number;
 
     @JsonProperty("material")
     private String material;

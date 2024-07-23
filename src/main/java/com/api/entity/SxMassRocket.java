@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SxMassRocket {
     @JsonProperty("kg")
-    private long kg;
+    private Integer kg;
 
     @JsonProperty("lb")
-    private long lb;
+    private Integer lb;
 }

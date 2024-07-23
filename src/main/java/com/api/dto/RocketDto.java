@@ -13,22 +13,22 @@ import java.util.List;
 public class RocketDto {
 
     @JsonProperty("id")
-    private int id;
+    private Integer id;
 
     @JsonProperty("active")
     private Boolean active;
 
     @JsonProperty("stages")
-    private int stages;
+    private Integer stages;
 
     @JsonProperty("boosters")
-    private int boosters;
+    private Integer boosters;
 
     @JsonProperty("cost_per_launch")
-    private long costPerLaunch;
+    private Integer costPerLaunch;
 
     @JsonProperty("success_rate_pct")
-    private int successRatePct;
+    private Integer successRatePct;
 
     @JsonProperty("first_flight")
     private String firstFlight;

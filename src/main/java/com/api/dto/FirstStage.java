@@ -14,13 +14,13 @@ public class FirstStage {
     private Boolean reusable;
 
     @JsonProperty("engines")
-    private int engines;
+    private Integer engines;
 
     @JsonProperty("fuel_amount_tons")
-    private double fuelAmountTons;
+    private Double fuelAmountTons;
 
     @JsonProperty("burn_time_sec")
-    private long burnTimeSec;
+    private Integer burnTimeSec;
 
     @JsonProperty("thrust_sea_level")
     private ThrustStage thrustSeaLevel;

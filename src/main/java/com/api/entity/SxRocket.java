@@ -12,13 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @NoArgsConstructor
@@ -30,22 +23,22 @@ public class SxRocket {
     public String _id;
 
     @JsonProperty("id")
-    private int id;
+    private Integer id;
 
     @JsonProperty("active")
     private Boolean active;
 
     @JsonProperty("stages")
-    private int stages;
+    private Integer stages;
 
     @JsonProperty("boosters")
-    private int boosters;
+    private Integer boosters;
 
     @JsonProperty("cost_per_launch")
-    private long costPerLaunch;
+    private Integer costPerLaunch;
 
     @JsonProperty("success_rate_pct")
-    private int successRatePct;
+    private Integer successRatePct;
 
     @JsonProperty("first_flight")
     private String firstFlight;

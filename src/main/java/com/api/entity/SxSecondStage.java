@@ -15,13 +15,13 @@ public class SxSecondStage {
     private Boolean reusable;
 
     @JsonProperty("engines")
-    private int engines;
+    private Integer engines;
 
     @JsonProperty("fuel_amount_tons")
-    private double fuelAmountTons;
+    private Double fuelAmountTons;
 
     @JsonProperty("burn_time_sec")
-    private int burnTimeSec;
+    private Integer burnTimeSec;
 
     @JsonProperty("thrust")
     private SxThrustStage thrust;

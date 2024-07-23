@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class LandingLegs {
 
     @JsonProperty("number")
-    private int number;
+    private Integer number;
 
     @JsonProperty("material")
     private String material;

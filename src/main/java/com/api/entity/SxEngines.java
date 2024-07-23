@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SxEngines {
     @JsonProperty("number")
-    private int number;
+    private Integer number;
 
     @JsonProperty("type")
     private String type;
@@ -27,7 +27,7 @@ public class SxEngines {
     private SxIsp isp;
 
     @JsonProperty("engine_loss_max")
-    private int engineLossMax;
+    private Integer engineLossMax;
 
     @JsonProperty("propellant_1")
     private String propellant1;
@@ -42,5 +42,5 @@ public class SxEngines {
     private SxThrustStage thrustVacuum;
 
     @JsonProperty("thrust_to_weight")
-    private int thrustToWeight;
+    private Integer thrustToWeight;
 }

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class MassRocket {
 
     @JsonProperty("kg")
-    private long kg;
+    private Integer kg;
 
     @JsonProperty("lb")
-    private long lb;
+    private Integer lb;
 }

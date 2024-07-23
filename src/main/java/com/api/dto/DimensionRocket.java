@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class DimensionRocket {
 
     @JsonProperty("meters")
-    private double meters;
+    private Double meters;
 
     @JsonProperty("feet")
-    private double feet;
+    private Double feet;
 }
