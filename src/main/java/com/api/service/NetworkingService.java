@@ -10,6 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
+import java.util.List;
 
 @Service
 @PropertySource("classpath:application.properties")
@@ -30,7 +31,7 @@ public class NetworkingService {
         this.webClient = webClient;
     }
 
-    public Flux<SxRocket> getRockets(Integer limit, Integer offset) {
+    public List<SxRocket> getRockets(Integer limit, Integer offset) {
         int usedLimit = (limit != null) ? limit : getDefaultLimit;
         int usedOffset = (offset != null) ? offset : getDefaultOffset;
 
@@ -38,13 +39,17 @@ public class NetworkingService {
         return webClient.get()
                 .uri(uri)
                 .retrieve()
-                .bodyToFlux(SxRocket.class);
+                .bodyToFlux(SxRocket.class)
+                .collectList()
+                .block();
+
     }
 
-    public Mono<SxRocket> getRocket(String rocketId) {
+    public SxRocket getRocket(String rocketId) {
         return webClient.get()
                 .uri("/{rocket_id}", rocketId)
                 .retrieve()
-                .bodyToMono(SxRocket.class);
+                .bodyToMono(SxRocket.class)
+                .block();
     }
 }

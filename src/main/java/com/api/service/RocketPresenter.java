@@ -21,34 +21,29 @@ public class RocketPresenter {
         this.rocketMapper = rocketMapper;
     }
 
-    public Mono<List<RocketDto>> getAllRockets(Boolean idParam, Integer limitParam, Integer offsetParam) {
-        Flux<SxRocket> rocketFlux = networkingService.getRockets(limitParam, offsetParam);
-        return rocketFlux.collectList()
-                .map(rockets -> {
-                    List<RocketDto> rocketDtoList;
-                    if(idParam) {
-                        rocketDtoList = rockets.stream()
-                                .map(rocketMapper::toDtoRocketMongoId)
-                                .collect(Collectors.toList());
-                    } else {
-                        rocketDtoList = rockets.stream()
-                                .map(rocketMapper::toDto)
-                                .collect(Collectors.toList());
-                    }
-                    return filterByParams(rocketDtoList, limitParam, offsetParam);
-                });
+    public List<RocketDto> getAllRockets(Boolean idParam, Integer limitParam, Integer offsetParam) {
+        List<SxRocket> rockets = networkingService.getRockets(limitParam, offsetParam);
+        List<RocketDto> rocketDtoList;
+        if (idParam) {
+            rocketDtoList = rockets.stream()
+                    .map(rocketMapper::toDtoRocketMongoId)
+                    .collect(Collectors.toList());
+        } else {
+            rocketDtoList = rockets.stream()
+                    .map(rocketMapper::toDto)
+                    .collect(Collectors.toList());
+        }
+        return filterByParams(rocketDtoList, limitParam, offsetParam);
     }
 
-    public Mono<RocketDto> getRocketById(String rocketId, Boolean idParam) {
-        Mono<SxRocket> rocketFlux = networkingService.getRocket(rocketId);
+    public RocketDto getRocketById(String rocketId, Boolean idParam) {
+        SxRocket rocket = networkingService.getRocket(rocketId);
 
-        return rocketFlux.map(rocket -> {
-            if(idParam) {
-                return rocketMapper.toDtoRocketMongoId(rocket);
-            } else {
-                return rocketMapper.toDto(rocket);
-            }
-        });
+        if (idParam) {
+            return rocketMapper.toDtoRocketMongoId(rocket);
+        } else {
+            return rocketMapper.toDto(rocket);
+        }
     }
 
     private List<RocketDto> filterByParams(List<RocketDto> rocketList, Integer limitParam, Integer offsetParam) {
