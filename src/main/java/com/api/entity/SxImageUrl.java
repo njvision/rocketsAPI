@@ -1,6 +1,5 @@
 package com.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +13,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "sx_landing_legs")
-public class SxLandingLegs {
+@Table(name = "sx_image_url")
+public class SxImageUrl {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonProperty("number")
-    private Integer number;
-
-    @JsonProperty("material")
-    private String material;
+    private String url;
 }

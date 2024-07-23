@@ -4,6 +4,7 @@ import com.api.dto.CompositeFairing;
 import com.api.dto.DimensionRocket;
 import com.api.dto.Engines;
 import com.api.dto.FirstStage;
+import com.api.dto.FlickrImages;
 import com.api.dto.Isp;
 import com.api.dto.LandingLegs;
 import com.api.dto.MassRocket;
@@ -17,6 +18,7 @@ import com.api.entity.SxCompositeFairing;
 import com.api.entity.SxDimensionRocket;
 import com.api.entity.SxEngines;
 import com.api.entity.SxFirstStage;
+import com.api.entity.SxFlickrImages;
 import com.api.entity.SxIsp;
 import com.api.entity.SxLandingLegs;
 import com.api.entity.SxMassRocket;
@@ -54,4 +56,6 @@ public interface RocketMapper {
     Payloads toDto(SxPayloads payloads);
 
     CompositeFairing toDto(SxCompositeFairing compositeFairing);
+
+    FlickrImages toDto(SxFlickrImages flickrImages);
 }

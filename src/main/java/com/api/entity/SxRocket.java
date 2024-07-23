@@ -8,6 +8,14 @@ import com.api.dto.MassRocket;
 import com.api.dto.PayloadWeights;
 import com.api.dto.SecondStage;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,13 +25,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "sx_rocket")
 public class SxRocket {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
+    private Integer id;
 
     @JsonProperty("_id")
     public String _id;
-
-    @JsonProperty("id")
-    private Integer id;
 
     @JsonProperty("active")
     private Boolean active;
@@ -49,32 +61,40 @@ public class SxRocket {
     @JsonProperty("company")
     private String company;
 
+    @ManyToOne
+    @JoinColumn(name = "height_id")
     @JsonProperty("height")
-    private DimensionRocket height;
+    private SxDimensionRocket height;
 
+    @ManyToOne
+    @JoinColumn(name = "diameter_id")
     @JsonProperty("diameter")
-    private DimensionRocket diameter;
+    private SxDimensionRocket diameter;
 
+    @ManyToOne
+    @JoinColumn(name = "mass_id")
     @JsonProperty("mass")
-    private MassRocket mass;
+    private SxMassRocket mass;
 
-    @JsonProperty("payload_weights")
-    private List<PayloadWeights> payloadWeights;
-
+    @ManyToOne
+    @JoinColumn(name = "first_stage_id")
     @JsonProperty("first_stage")
-    private FirstStage firstStage;
+    private SxFirstStage firstStage;
 
+    @ManyToOne
+    @JoinColumn(name = "second_stage_id")
     @JsonProperty("second_stage")
-    private SecondStage secondStage;
+    private SxSecondStage secondStage;
 
+    @ManyToOne
+    @JoinColumn(name = "engines_id")
     @JsonProperty("engines")
-    private Engines engines;
+    private SxEngines engines;
 
+    @ManyToOne
+    @JoinColumn(name = "landing_legs_id")
     @JsonProperty("landing_legs")
-    private LandingLegs landingLegs;
-
-    @JsonProperty("flickr_images")
-    private List<String> flickrImages;
+    private SxLandingLegs landingLegs;
 
     @JsonProperty("wikipedia")
     private String wikipedia;
