@@ -31,7 +31,7 @@ public class RocketController {
 
     @GetMapping("/{rocket_id}")
     public RocketDto getRocketById(@PathVariable("rocket_id") String rocketId,
-                                         @RequestParam(value = "id", required = false) Boolean idParam) {
+                                   @RequestParam(value = "id", required = false) Boolean idParam) {
 
         return rocketPresenter.getRocketById(rocketId, idParam);
     }

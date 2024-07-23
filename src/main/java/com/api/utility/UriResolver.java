@@ -9,11 +9,11 @@ public class UriResolver {
     public static URI buildUri(String path, String limit, String offset) {
         UriComponentsBuilder componentsBuilder = UriComponentsBuilder.fromPath(path);
 
-        if(limit != null) {
+        if (limit != null) {
             componentsBuilder.queryParam("limit", limit);
         }
 
-        if(offset != null) {
+        if (offset != null) {
             componentsBuilder.queryParam("offset", offset);
         }
         return componentsBuilder.build().toUri();
