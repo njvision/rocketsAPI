@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @Getter
 public class SecondStage {
 
-    @JsonProperty("reusable")
-    private Boolean reusable;
-
     @JsonProperty("engines")
     private Integer engines;
 

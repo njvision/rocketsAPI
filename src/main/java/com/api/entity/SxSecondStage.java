@@ -1,7 +1,5 @@
 package com.api.entity;
 
-import com.api.dto.Payloads;
-import com.api.dto.ThrustStage;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
