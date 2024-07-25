@@ -50,28 +50,28 @@ public class SxRocket {
     private String company;
 
     @JsonProperty("height")
-    private DimensionRocket height;
+    private SxDimensionRocket height;
 
     @JsonProperty("diameter")
-    private DimensionRocket diameter;
+    private SxDimensionRocket diameter;
 
     @JsonProperty("mass")
-    private MassRocket mass;
+    private SxMassRocket mass;
 
     @JsonProperty("payload_weights")
-    private List<PayloadWeights> payloadWeights;
+    private List<SxPayloadWeights> payloadWeights;
 
     @JsonProperty("first_stage")
-    private FirstStage firstStage;
+    private SxFirstStage firstStage;
 
     @JsonProperty("second_stage")
-    private SecondStage secondStage;
+    private SxSecondStage secondStage;
 
     @JsonProperty("engines")
-    private Engines engines;
+    private SxEngines engines;
 
     @JsonProperty("landing_legs")
-    private LandingLegs landingLegs;
+    private SxLandingLegs landingLegs;
 
     @JsonProperty("flickr_images")
     private List<String> flickrImages;

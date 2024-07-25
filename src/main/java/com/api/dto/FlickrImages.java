@@ -11,5 +11,5 @@ import java.util.List;
 @Getter
 public class FlickrImages {
 
-    private ImageUrl url;
+    private List<ImageUrl> urlList;
 }

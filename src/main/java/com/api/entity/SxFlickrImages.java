@@ -11,21 +11,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Entity
-@Table(name="sx_flickr_images")
 public class SxFlickrImages {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "rocket_id")
-    private SxRocket rocket;
-
-    @ManyToOne
-    @JoinColumn(name = "url_id")
-    private SxImageUrl url;
+    private List<SxImageUrl> urlList;
 }
