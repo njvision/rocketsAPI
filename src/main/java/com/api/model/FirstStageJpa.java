@@ -1,4 +1,4 @@
-package com.api.entity;
+package com.api.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,17 +15,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name="sx_flickr_images")
-public class SxFlickrImages {
+@Table(name = "sx_first_stage")
+public class FirstStageJpa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "rocket_id")
-    private SxRocket rocket;
+    private Boolean reusable;
+
+    private Integer engines;
+
+    private Double fuelAmountTons;
+
+    private Integer burnTimeSec;
 
     @ManyToOne
-    @JoinColumn(name = "url_id")
-    private SxImageUrl url;
+    @JoinColumn(name = "thrust_sea_level_id")
+    private ThrustStageJpa thrustSeaLevel;
+
+    @ManyToOne
+    @JoinColumn(name = "thrust_vacuum_id")
+    private ThrustStageJpa thrustVacuum;
 }

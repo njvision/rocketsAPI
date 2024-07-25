@@ -1,4 +1,4 @@
-package com.api.entity;
+package com.api.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,17 +15,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name="sx_flickr_images")
-public class SxFlickrImages {
+@Table(name="sx_composite_fairing")
+public class CompositeFairingJpa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "rocket_id")
-    private SxRocket rocket;
+    @JoinColumn(name = "height_id")
+    private DimensionRocketJpa height;
 
     @ManyToOne
-    @JoinColumn(name = "url_id")
-    private SxImageUrl url;
+    @JoinColumn(name = "diameter_id")
+    private DimensionRocketJpa diameter;
 }

@@ -1,5 +1,6 @@
-package com.api.entity;
+package com.api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,17 +16,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name="sx_flickr_images")
-public class SxFlickrImages {
+@Table(name = "sx_payloads")
+public class PayloadsJpa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "rocket_id")
-    private SxRocket rocket;
+    private String option1;
+
+    private String option2;
 
     @ManyToOne
-    @JoinColumn(name = "url_id")
-    private SxImageUrl url;
+    @JoinColumn(name = "composite_fairing_id")
+    private CompositeFairingJpa compositeFairing;
 }
