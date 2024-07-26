@@ -1,6 +1,7 @@
 package com.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name="sx_thrust_stage")
+@Table(name="thrust_stage")
 public class ThrustStageJpa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, updatable = false)
     private Integer id;
 
+    @Column(name = "kn")
     private Integer kn;
 
+    @Column(name = "lbf")
     private Integer lbf;
 }

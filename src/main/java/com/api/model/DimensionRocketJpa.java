@@ -1,6 +1,7 @@
 package com.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name="sx_dimension_rocket")
+@Table(name="dimension_rocket")
 public class DimensionRocketJpa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "meters")
     private Double meters;
 
+    @Column(name = "feet")
     private Double feet;
 }

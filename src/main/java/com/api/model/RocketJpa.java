@@ -1,5 +1,6 @@
 package com.api.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,29 +16,39 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "sx_rocket")
+@Table(name = "rocket")
 public class RocketJpa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    public String _id;
+//    @Column(name = "_id")
+//    public String _id;
 
+    @Column(name = "active")
     private Boolean active;
 
+    @Column(name = "stages")
     private Integer stages;
 
+    @Column(name = "boosters")
     private Integer boosters;
 
+    @Column(name = "cost_per_launch")
     private Integer costPerLaunch;
 
+    @Column(name = "success_rate_pct")
     private Integer successRatePct;
 
+    @Column(name = "first_flight")
     private String firstFlight;
 
+    @Column(name = "country")
     private String country;
 
+    @Column(name = "company")
     private String company;
 
     @ManyToOne
@@ -68,13 +79,18 @@ public class RocketJpa {
     @JoinColumn(name = "landing_legs_id")
     private LandingLegsJpa landingLegs;
 
+    @Column(name = "wikipedia")
     private String wikipedia;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "rocket_id")
     private String rocketId;
 
+    @Column(name = "rocket_name")
     private String rocketName;
 
+    @Column(name = "rocket_type")
     private String rocketType;
 }
