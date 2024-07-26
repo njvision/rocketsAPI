@@ -42,7 +42,7 @@ import com.api.model.SecondStageJpa;
 import com.api.model.ThrustStageJpa;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface RocketJpaMapper {
     RocketJpa toDto(SxRocket sxRocket);
 

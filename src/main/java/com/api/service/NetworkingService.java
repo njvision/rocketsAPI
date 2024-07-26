@@ -2,10 +2,13 @@ package com.api.service;
 
 import com.api.entity.SxRocket;
 import com.api.utility.UriResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.util.List;
@@ -13,6 +16,9 @@ import java.util.List;
 @Service
 @PropertySource("classpath:application.properties")
 public class NetworkingService {
+
+    @Value("${rocket.api.base-url}")
+    private String baseUrl;
 
     @Value("${rocket.api.path}")
     private String getPath;
@@ -34,13 +40,13 @@ public class NetworkingService {
         int usedOffset = (offset != null) ? offset : getDefaultOffset;
 
         URI uri = UriResolver.buildUri(getPath, Integer.toString(usedLimit), Integer.toString(usedOffset));
+
         return webClient.get()
-                .uri(uri)
+                .uri(baseUrl + uri)
                 .retrieve()
                 .bodyToFlux(SxRocket.class)
                 .collectList()
                 .block();
-
     }
 
     public SxRocket getRocket(String rocketId) {

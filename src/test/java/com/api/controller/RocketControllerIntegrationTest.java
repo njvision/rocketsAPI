@@ -1,9 +1,6 @@
 package com.api.controller;
 
-import com.api.config.RocketsApplication;
-import com.api.dto.RocketDto;
-import com.api.entity.SxRocket;
-import com.api.model.RocketJpa;
+import com.api.RocketsApplication;
 import com.api.repository.RocketRepository;
 import com.api.service.RocketPresenter;
 import com.api.service.RocketService;
@@ -13,34 +10,30 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = RocketsApplication.class)
 @AutoConfigureMockMvc
 public class RocketControllerIntegrationTest {
-//    @Autowired
-//    private MockMvc mockMvc;
-//
-//    @Autowired
-//    private RocketRepository rocketRepository;
-//
-//    @MockBean
-//    private RocketPresenter rocketPresenter;
-//
-//    @MockBean
-//    private RocketService rocketService;
-//
-//    @Test
-//    public void testGetAllRockets() throws Exception {
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private RocketRepository rocketRepository;
+
+    @MockBean
+    private RocketPresenter rocketPresenter;
+
+    @MockBean
+    private RocketService rocketService;
+
+    @Test
+    public void testGetAllRockets() throws Exception {
+
+//        rocketController.getAllRockets(null, null, null);
 //        RocketDto mockRocketDto = new RocketDto();
 //        mockRocketDto.setRocketName("Falcon 9");
         // Set other fields of mockRocketDto...
@@ -50,14 +43,18 @@ public class RocketControllerIntegrationTest {
 //        when(rocketPresenter.getAllRockets(null, null, null)).thenReturn(mockRocketDtos);
 
         // Mock the transformation from RocketDto to SxRocket
-        SxRocket mockSxRocket = new SxRocket();
+//        SxRocket mockSxRocket = new SxRocket();
 //        mockSxRocket.setRocketName("Falcon 9");
         // Set other fields of mockSxRocket...
 
 //        when(rocketService.getRockets(mockRocketDtos)).thenReturn(Arrays.asList(mockSxRocket));
 
+//        ResultActions resultActions = mockMvc.perform(get(""));
+//        String responseContent = resultActions.andReturn().getResponse().getContentAsString();
+//        System.out.println("Response Content: " + responseContent);
+
         // Perform the GET request and verify the results
-//        mockMvc.perform(get("/your-endpoint"))  // Use your actual endpoint path
+//        mockMvc.perform(get("/"))
 //                .andExpect(status().isOk())
 //                .andExpect((ResultMatcher) jsonPath("$[0].rocketName", "Falcon 9"));
 
@@ -65,5 +62,5 @@ public class RocketControllerIntegrationTest {
 //        List<RocketJpa> savedRockets = rocketRepository.findAll();
 //        assertThat(savedRockets).isNotEmpty();
 //        assertThat(savedRockets.get(0).getRocketName()).isEqualTo("Falcon 9");
-//    }
+    }
 }
