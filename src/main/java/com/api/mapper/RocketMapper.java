@@ -33,29 +33,57 @@ import org.mapstruct.Mapper;
 public interface RocketMapper {
     RocketDto toDto(SxRocket sxRocket);
 
+    SxRocket toDto(RocketDto sxRocket);
+
     RocketMongoIdDto toDtoRocketMongoId(SxRocket sxRocketMongoId);
+
+    SxRocket toDtoRocketMongoId(RocketMongoIdDto sxRocketMongoId);
 
     DimensionRocket toDto(SxDimensionRocket dimensionRocket);
 
+    SxDimensionRocket toDto(DimensionRocket dimensionRocket);
+
     MassRocket toDto(SxMassRocket massRocket);
+
+    SxMassRocket toDto(MassRocket massRocket);
 
     PayloadWeights toDto(SxPayloadWeights payloadWeights);
 
+    SxPayloadWeights toDto(PayloadWeights payloadWeights);
+
     FirstStage toDto(SxFirstStage firstStage);
+
+    SxFirstStage toDto(FirstStage firstStage);
 
     SecondStage toDto(SxSecondStage secondStage);
 
+    SxSecondStage toDto(SecondStage secondStage);
+
     Engines toDto(SxEngines engines);
+
+    SxEngines toDto(Engines engines);
 
     LandingLegs toDto(SxLandingLegs landingLegs);
 
+    SxLandingLegs toDto(LandingLegs landingLegs);
+
     Isp toDto(SxIsp isp);
+
+    SxIsp toDto(Isp isp);
 
     ThrustStage toDto(SxThrustStage thrustEngines);
 
+    SxThrustStage toDto(ThrustStage thrustEngines);
+
     Payloads toDto(SxPayloads payloads);
+
+    SxPayloads toDto(Payloads payloads);
 
     CompositeFairing toDto(SxCompositeFairing compositeFairing);
 
+    SxCompositeFairing toDto(CompositeFairing compositeFairing);
+
     FlickrImages toDto(SxFlickrImages flickrImages);
+
+    SxFlickrImages toDto(FlickrImages flickrImages);
 }
