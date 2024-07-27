@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Entity
 @Table(name="isp")
 public class IspJpa {
@@ -27,4 +26,28 @@ public class IspJpa {
 
     @Column(name = "vacuum")
     private Integer vacuum;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getSeaLevel() {
+        return seaLevel;
+    }
+
+    public void setSeaLevel(Integer seaLevel) {
+        this.seaLevel = seaLevel;
+    }
+
+    public Integer getVacuum() {
+        return vacuum;
+    }
+
+    public void setVacuum(Integer vacuum) {
+        this.vacuum = vacuum;
+    }
 }

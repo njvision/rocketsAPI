@@ -28,6 +28,7 @@ import com.api.entity.SxRocket;
 import com.api.entity.SxSecondStage;
 import com.api.entity.SxThrustStage;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")

@@ -36,6 +36,8 @@ public class RocketController {
 
         List<RocketDto> rocketDtoList = rocketPresenter.getAllRockets(idParam, limitParam, offsetParam);
         List<SxRocket> sxRocketList = rocketService.getRockets(rocketDtoList);
+
+        System.out.println(sxRocketList.get(0).getFlickrImages());
         rocketPersistenceService.saveRockets(sxRocketList);
         return rocketDtoList;
     }

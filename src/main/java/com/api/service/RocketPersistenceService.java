@@ -26,6 +26,7 @@ public class RocketPersistenceService {
                 .map(rocketJpaMapper::toDto)
                 .collect(Collectors.toList());
 
+        System.out.println(rocketJpa.get(0).getFlickrImages());
         rocketRepository.saveAll(rocketJpa);
     }
 }

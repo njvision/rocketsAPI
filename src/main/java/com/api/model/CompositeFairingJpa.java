@@ -1,5 +1,6 @@
 package com.api.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +15,6 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Entity
 @Table(name="composite_fairing")
 public class CompositeFairingJpa {
@@ -23,11 +23,35 @@ public class CompositeFairingJpa {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "height_id")
     private DimensionRocketJpa height;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "diameter_id")
     private DimensionRocketJpa diameter;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public DimensionRocketJpa getHeight() {
+        return height;
+    }
+
+    public void setHeight(DimensionRocketJpa height) {
+        this.height = height;
+    }
+
+    public DimensionRocketJpa getDiameter() {
+        return diameter;
+    }
+
+    public void setDiameter(DimensionRocketJpa diameter) {
+        this.diameter = diameter;
+    }
 }

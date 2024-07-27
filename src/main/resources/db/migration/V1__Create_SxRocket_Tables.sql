@@ -124,7 +124,7 @@ CREATE TABLE rocket
     second_stage_id  INT,
     engines_id       INT,
     landing_legs_id  INT,
-    wikipedia        VARCHAR(255),
+    wikipedia        TEXT,
     description      TEXT,
     rocket_id        VARCHAR(255),
     rocket_name      VARCHAR(255),

@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Entity
 @Table(name="mass_rocket")
 public class MassRocketJpa {
@@ -27,4 +26,28 @@ public class MassRocketJpa {
 
     @Column(name = "lb")
     private Integer lb;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getKg() {
+        return kg;
+    }
+
+    public void setKg(Integer kg) {
+        this.kg = kg;
+    }
+
+    public Integer getLb() {
+        return lb;
+    }
+
+    public void setLb(Integer lb) {
+        this.lb = lb;
+    }
 }

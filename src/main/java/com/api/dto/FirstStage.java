@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 public class FirstStage {
 
     @JsonProperty("reusable")
@@ -27,4 +27,52 @@ public class FirstStage {
 
     @JsonProperty("thrust_vacuum")
     private ThrustStage thrustVacuum;
+
+    public Boolean getReusable() {
+        return reusable;
+    }
+
+    public void setReusable(Boolean reusable) {
+        this.reusable = reusable;
+    }
+
+    public Integer getEngines() {
+        return engines;
+    }
+
+    public void setEngines(Integer engines) {
+        this.engines = engines;
+    }
+
+    public Double getFuelAmountTons() {
+        return fuelAmountTons;
+    }
+
+    public void setFuelAmountTons(Double fuelAmountTons) {
+        this.fuelAmountTons = fuelAmountTons;
+    }
+
+    public Integer getBurnTimeSec() {
+        return burnTimeSec;
+    }
+
+    public void setBurnTimeSec(Integer burnTimeSec) {
+        this.burnTimeSec = burnTimeSec;
+    }
+
+    public ThrustStage getThrustSeaLevel() {
+        return thrustSeaLevel;
+    }
+
+    public void setThrustSeaLevel(ThrustStage thrustSeaLevel) {
+        this.thrustSeaLevel = thrustSeaLevel;
+    }
+
+    public ThrustStage getThrustVacuum() {
+        return thrustVacuum;
+    }
+
+    public void setThrustVacuum(ThrustStage thrustVacuum) {
+        this.thrustVacuum = thrustVacuum;
+    }
 }

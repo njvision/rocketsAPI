@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Entity
 @Table(name="dimension_rocket")
 public class DimensionRocketJpa {
@@ -27,4 +26,28 @@ public class DimensionRocketJpa {
 
     @Column(name = "feet")
     private Double feet;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Double getMeters() {
+        return meters;
+    }
+
+    public void setMeters(Double meters) {
+        this.meters = meters;
+    }
+
+    public Double getFeet() {
+        return feet;
+    }
+
+    public void setFeet(Double feet) {
+        this.feet = feet;
+    }
 }

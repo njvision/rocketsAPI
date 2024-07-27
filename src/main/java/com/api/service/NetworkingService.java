@@ -36,10 +36,15 @@ public class NetworkingService {
     }
 
     public List<SxRocket> getRockets(Integer limit, Integer offset) {
+
+        System.out.println("Start getRockets()");
+
         int usedLimit = (limit != null) ? limit : getDefaultLimit;
         int usedOffset = (offset != null) ? offset : getDefaultOffset;
 
         URI uri = UriResolver.buildUri(getPath, Integer.toString(usedLimit), Integer.toString(usedOffset));
+
+        System.out.println("Uri: " + baseUrl + uri.toString());
 
         return webClient.get()
                 .uri(baseUrl + uri)

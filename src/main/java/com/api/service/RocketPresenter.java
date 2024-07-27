@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,8 +23,9 @@ public class RocketPresenter {
 
     public List<RocketDto> getAllRockets(Boolean idParam, Integer limitParam, Integer offsetParam) {
         List<SxRocket> rockets = networkingService.getRockets(limitParam, offsetParam);
+
         List<RocketDto> rocketDtoList;
-        if (idParam) {
+        if (Optional.ofNullable(idParam).isPresent()) {
             rocketDtoList = rockets.stream()
                     .map(rocketMapper::toDtoRocketMongoId)
                     .collect(Collectors.toList());
@@ -32,6 +34,7 @@ public class RocketPresenter {
                     .map(rocketMapper::toDto)
                     .collect(Collectors.toList());
         }
+
         return filterByParams(rocketDtoList, limitParam, offsetParam);
     }
 

@@ -10,13 +10,21 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 public class SxFlickrImages {
 
     private List<SxImageUrl> urlList;
+
+    public List<SxImageUrl> getUrlList() {
+        return urlList;
+    }
+
+    public void setUrlList(List<SxImageUrl> urlList) {
+        this.urlList = urlList;
+    }
 }
