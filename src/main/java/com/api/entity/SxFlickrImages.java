@@ -18,13 +18,13 @@ import java.util.List;
 @NoArgsConstructor
 public class SxFlickrImages {
 
-    private List<SxImageUrl> urlList;
+    private String url;
 
-    public List<SxImageUrl> getUrlList() {
-        return urlList;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlList(List<SxImageUrl> urlList) {
-        this.urlList = urlList;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

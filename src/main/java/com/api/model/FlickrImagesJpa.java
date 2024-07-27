@@ -23,13 +23,12 @@ public class FlickrImagesJpa {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @Column(name = "url")
+    private String url;
+
+    @ManyToOne
     @JoinColumn(name = "rocket_id")
     private RocketJpa rocket;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "url_id")
-    private ImageUrlJpa url;
 
     public Integer getId() {
         return id;
@@ -39,19 +38,19 @@ public class FlickrImagesJpa {
         this.id = id;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public RocketJpa getRocket() {
         return rocket;
     }
 
     public void setRocket(RocketJpa rocket) {
         this.rocket = rocket;
-    }
-
-    public ImageUrlJpa getUrl() {
-        return url;
-    }
-
-    public void setUrl(ImageUrlJpa url) {
-        this.url = url;
     }
 }

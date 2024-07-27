@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SxPayloadWeights {
     @JsonProperty("id")
-    private String id;
+    private String payloadId;
 
     @JsonProperty("name")
     private String name;
@@ -21,12 +21,12 @@ public class SxPayloadWeights {
     @JsonProperty("lb")
     private Integer lb;
 
-    public String getId() {
-        return id;
+    public String getPayloadId() {
+        return payloadId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPayloadId(String payloadId) {
+        this.payloadId = payloadId;
     }
 
     public String getName() {

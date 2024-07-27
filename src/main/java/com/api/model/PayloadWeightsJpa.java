@@ -23,10 +23,6 @@ public class PayloadWeightsJpa {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rocket_id")
-    private RocketJpa rocket;
-
     @Column(name = "payload_id")
     private String payloadId;
 
@@ -39,20 +35,16 @@ public class PayloadWeightsJpa {
     @Column(name = "lb")
     private Integer lb;
 
+    @ManyToOne
+    @JoinColumn(name = "rocket_id")
+    private RocketJpa rocket;
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public RocketJpa getRocket() {
-        return rocket;
-    }
-
-    public void setRocket(RocketJpa rocket) {
-        this.rocket = rocket;
     }
 
     public String getPayloadId() {
@@ -85,5 +77,13 @@ public class PayloadWeightsJpa {
 
     public void setLb(Integer lb) {
         this.lb = lb;
+    }
+
+    public RocketJpa getRocket() {
+        return rocket;
+    }
+
+    public void setRocket(RocketJpa rocket) {
+        this.rocket = rocket;
     }
 }

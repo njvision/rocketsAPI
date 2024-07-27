@@ -11,13 +11,13 @@ import java.util.List;
 @NoArgsConstructor
 public class FlickrImages {
 
-    private List<ImageUrl> urlList;
+    private String url;
 
-    public List<ImageUrl> getUrlList() {
-        return urlList;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlList(List<ImageUrl> urlList) {
-        this.urlList = urlList;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

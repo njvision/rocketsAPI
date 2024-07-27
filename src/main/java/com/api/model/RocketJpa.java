@@ -1,17 +1,22 @@
 package com.api.model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -63,6 +68,9 @@ public class RocketJpa {
     @JoinColumn(name = "mass_id")
     private MassRocketJpa mass;
 
+    @OneToMany(mappedBy = "rocket", cascade = CascadeType.ALL)
+    private List<PayloadWeightsJpa> payloadWeights;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "first_stage_id")
     private FirstStageJpa firstStage;
@@ -78,6 +86,11 @@ public class RocketJpa {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "landing_legs_id")
     private LandingLegsJpa landingLegs;
+
+    @ElementCollection
+    @CollectionTable(name = "flickr_images", joinColumns = @JoinColumn(name = "rocket_id"))
+    @Column(name = "url")
+    private List<String> flickrImages;
 
     @Column(name = "wikipedia", columnDefinition = "TEXT")
     private String wikipedia;
@@ -190,6 +203,14 @@ public class RocketJpa {
         this.mass = mass;
     }
 
+    public List<PayloadWeightsJpa> getPayloadWeights() {
+        return payloadWeights;
+    }
+
+    public void setPayloadWeights(List<PayloadWeightsJpa> payloadWeights) {
+        this.payloadWeights = payloadWeights;
+    }
+
     public FirstStageJpa getFirstStage() {
         return firstStage;
     }
@@ -220,6 +241,14 @@ public class RocketJpa {
 
     public void setLandingLegs(LandingLegsJpa landingLegs) {
         this.landingLegs = landingLegs;
+    }
+
+    public List<String> getFlickrImages() {
+        return flickrImages;
+    }
+
+    public void setFlickrImages(List<String> flickrImages) {
+        this.flickrImages = flickrImages;
     }
 
     public String getWikipedia() {
@@ -261,5 +290,4 @@ public class RocketJpa {
     public void setRocketType(String rocketType) {
         this.rocketType = rocketType;
     }
-
 }
