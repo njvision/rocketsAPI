@@ -10,9 +10,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="dimension_rocket")
 public class DimensionRocketJpa {
@@ -26,28 +29,4 @@ public class DimensionRocketJpa {
 
     @Column(name = "feet")
     private Double feet;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Double getMeters() {
-        return meters;
-    }
-
-    public void setMeters(Double meters) {
-        this.meters = meters;
-    }
-
-    public Double getFeet() {
-        return feet;
-    }
-
-    public void setFeet(Double feet) {
-        this.feet = feet;
-    }
 }

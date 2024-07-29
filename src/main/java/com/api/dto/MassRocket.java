@@ -8,6 +8,8 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class MassRocket {
 
     @JsonProperty("kg")
@@ -15,20 +17,4 @@ public class MassRocket {
 
     @JsonProperty("lb")
     private Integer lb;
-
-    public Integer getLb() {
-        return lb;
-    }
-
-    public void setLb(Integer lb) {
-        this.lb = lb;
-    }
-
-    public Integer getKg() {
-        return kg;
-    }
-
-    public void setKg(Integer kg) {
-        this.kg = kg;
-    }
 }

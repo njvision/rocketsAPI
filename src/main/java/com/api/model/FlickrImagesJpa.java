@@ -12,9 +12,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="flickr_images")
 public class FlickrImagesJpa {
@@ -29,28 +32,4 @@ public class FlickrImagesJpa {
     @ManyToOne
     @JoinColumn(name = "rocket_id")
     private RocketJpa rocket;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public RocketJpa getRocket() {
-        return rocket;
-    }
-
-    public void setRocket(RocketJpa rocket) {
-        this.rocket = rocket;
-    }
 }

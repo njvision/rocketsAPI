@@ -8,6 +8,8 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class LandingLegs {
 
     @JsonProperty("number")
@@ -15,20 +17,4 @@ public class LandingLegs {
 
     @JsonProperty("material")
     private String material;
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
 }

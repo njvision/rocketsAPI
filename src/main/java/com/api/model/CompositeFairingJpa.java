@@ -12,9 +12,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="composite_fairing")
 public class CompositeFairingJpa {
@@ -30,28 +33,4 @@ public class CompositeFairingJpa {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "diameter_id")
     private DimensionRocketJpa diameter;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public DimensionRocketJpa getHeight() {
-        return height;
-    }
-
-    public void setHeight(DimensionRocketJpa height) {
-        this.height = height;
-    }
-
-    public DimensionRocketJpa getDiameter() {
-        return diameter;
-    }
-
-    public void setDiameter(DimensionRocketJpa diameter) {
-        this.diameter = diameter;
-    }
 }

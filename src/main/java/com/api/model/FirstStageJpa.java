@@ -12,9 +12,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "first_stage")
 public class FirstStageJpa {
@@ -42,60 +45,4 @@ public class FirstStageJpa {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "thrust_vacuum_id")
     private ThrustStageJpa thrustVacuum;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Boolean getReusable() {
-        return reusable;
-    }
-
-    public void setReusable(Boolean reusable) {
-        this.reusable = reusable;
-    }
-
-    public Integer getEngines() {
-        return engines;
-    }
-
-    public void setEngines(Integer engines) {
-        this.engines = engines;
-    }
-
-    public Double getFuelAmountTons() {
-        return fuelAmountTons;
-    }
-
-    public void setFuelAmountTons(Double fuelAmountTons) {
-        this.fuelAmountTons = fuelAmountTons;
-    }
-
-    public Integer getBurnTimeSec() {
-        return burnTimeSec;
-    }
-
-    public void setBurnTimeSec(Integer burnTimeSec) {
-        this.burnTimeSec = burnTimeSec;
-    }
-
-    public ThrustStageJpa getThrustSeaLevel() {
-        return thrustSeaLevel;
-    }
-
-    public void setThrustSeaLevel(ThrustStageJpa thrustSeaLevel) {
-        this.thrustSeaLevel = thrustSeaLevel;
-    }
-
-    public ThrustStageJpa getThrustVacuum() {
-        return thrustVacuum;
-    }
-
-    public void setThrustVacuum(ThrustStageJpa thrustVacuum) {
-        this.thrustVacuum = thrustVacuum;
-    }
 }

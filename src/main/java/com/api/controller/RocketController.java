@@ -1,10 +1,12 @@
 package com.api.controller;
 
+import com.api.config.PaginationProperties;
 import com.api.dto.RocketDto;
 import com.api.entity.SxRocket;
 import com.api.service.RocketPersistenceService;
 import com.api.service.RocketPresenter;
 import com.api.service.RocketService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +22,13 @@ public class RocketController {
     private final RocketPresenter rocketPresenter;
     private final RocketPersistenceService rocketPersistenceService;
     private final RocketService rocketService;
+    private final PaginationProperties paginationProperties;
 
-    public RocketController(RocketPresenter rocketPresenter, RocketPersistenceService rocketPersistenceService, RocketService rocketService) {
+    public RocketController(RocketPresenter rocketPresenter, RocketPersistenceService rocketPersistenceService, RocketService rocketService, PaginationProperties paginationProperties) {
         this.rocketPresenter = rocketPresenter;
         this.rocketPersistenceService = rocketPersistenceService;
         this.rocketService = rocketService;
+        this.paginationProperties = paginationProperties;
     }
 
     @GetMapping

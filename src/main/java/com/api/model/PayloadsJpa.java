@@ -13,9 +13,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "payloads")
 public class PayloadsJpa {
@@ -33,36 +36,4 @@ public class PayloadsJpa {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "composite_fairing_id")
     private CompositeFairingJpa compositeFairing;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getOption1() {
-        return option1;
-    }
-
-    public void setOption1(String option1) {
-        this.option1 = option1;
-    }
-
-    public String getOption2() {
-        return option2;
-    }
-
-    public void setOption2(String option2) {
-        this.option2 = option2;
-    }
-
-    public CompositeFairingJpa getCompositeFairing() {
-        return compositeFairing;
-    }
-
-    public void setCompositeFairing(CompositeFairingJpa compositeFairing) {
-        this.compositeFairing = compositeFairing;
-    }
 }

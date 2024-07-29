@@ -10,9 +10,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="thrust_stage")
 public class ThrustStageJpa {
@@ -26,28 +29,4 @@ public class ThrustStageJpa {
 
     @Column(name = "lbf")
     private Integer lbf;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getKn() {
-        return kn;
-    }
-
-    public void setKn(Integer kn) {
-        this.kn = kn;
-    }
-
-    public Integer getLbf() {
-        return lbf;
-    }
-
-    public void setLbf(Integer lbf) {
-        this.lbf = lbf;
-    }
 }

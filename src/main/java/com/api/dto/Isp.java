@@ -8,6 +8,8 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Isp {
 
     @JsonProperty("sea_level")
@@ -15,20 +17,4 @@ public class Isp {
 
     @JsonProperty("vacuum")
     private Integer vacuum;
-
-    public Integer getSeaLevel() {
-        return seaLevel;
-    }
-
-    public void setSeaLevel(Integer seaLevel) {
-        this.seaLevel = seaLevel;
-    }
-
-    public Integer getVacuum() {
-        return vacuum;
-    }
-
-    public void setVacuum(Integer vacuum) {
-        this.vacuum = vacuum;
-    }
 }

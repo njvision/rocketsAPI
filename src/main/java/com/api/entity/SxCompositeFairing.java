@@ -9,26 +9,12 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class SxCompositeFairing {
     @JsonProperty("height")
     private SxDimensionRocket height;
 
     @JsonProperty("diameter")
     private SxDimensionRocket diameter;
-
-    public SxDimensionRocket getHeight() {
-        return height;
-    }
-
-    public void setHeight(SxDimensionRocket height) {
-        this.height = height;
-    }
-
-    public SxDimensionRocket getDiameter() {
-        return diameter;
-    }
-
-    public void setDiameter(SxDimensionRocket diameter) {
-        this.diameter = diameter;
-    }
 }

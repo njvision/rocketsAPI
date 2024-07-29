@@ -8,6 +8,8 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class ThrustStage {
 
     @JsonProperty("kN")
@@ -15,20 +17,4 @@ public class ThrustStage {
 
     @JsonProperty("lbf")
     private Integer lbf;
-
-    public Integer getKn() {
-        return kn;
-    }
-
-    public void setKn(Integer kn) {
-        this.kn = kn;
-    }
-
-    public Integer getLbf() {
-        return lbf;
-    }
-
-    public void setLbf(Integer lbf) {
-        this.lbf = lbf;
-    }
 }

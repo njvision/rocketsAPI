@@ -8,26 +8,12 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class SxDimensionRocket {
     @JsonProperty("meters")
     private Double meters;
 
     @JsonProperty("feet")
     private Double feet;
-
-    public Double getMeters() {
-        return meters;
-    }
-
-    public void setMeters(Double meters) {
-        this.meters = meters;
-    }
-
-    public Double getFeet() {
-        return feet;
-    }
-
-    public void setFeet(Double feet) {
-        this.feet = feet;
-    }
 }

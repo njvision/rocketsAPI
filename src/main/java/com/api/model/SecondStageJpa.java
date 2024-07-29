@@ -12,9 +12,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "second_stage")
 public class SecondStageJpa {
@@ -39,52 +42,4 @@ public class SecondStageJpa {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payloads_id")
     private PayloadsJpa payloads;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getEngines() {
-        return engines;
-    }
-
-    public void setEngines(Integer engines) {
-        this.engines = engines;
-    }
-
-    public Double getFuelAmountTons() {
-        return fuelAmountTons;
-    }
-
-    public void setFuelAmountTons(Double fuelAmountTons) {
-        this.fuelAmountTons = fuelAmountTons;
-    }
-
-    public Integer getBurnTimeSec() {
-        return burnTimeSec;
-    }
-
-    public void setBurnTimeSec(Integer burnTimeSec) {
-        this.burnTimeSec = burnTimeSec;
-    }
-
-    public ThrustStageJpa getThrust() {
-        return thrust;
-    }
-
-    public void setThrust(ThrustStageJpa thrust) {
-        this.thrust = thrust;
-    }
-
-    public PayloadsJpa getPayloads() {
-        return payloads;
-    }
-
-    public void setPayloads(PayloadsJpa payloads) {
-        this.payloads = payloads;
-    }
 }

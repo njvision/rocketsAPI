@@ -12,9 +12,12 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "payload_weights")
 public class PayloadWeightsJpa {
@@ -38,52 +41,4 @@ public class PayloadWeightsJpa {
     @ManyToOne
     @JoinColumn(name = "rocket_id")
     private RocketJpa rocket;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPayloadId() {
-        return payloadId;
-    }
-
-    public void setPayloadId(String payloadId) {
-        this.payloadId = payloadId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getKg() {
-        return kg;
-    }
-
-    public void setKg(Integer kg) {
-        this.kg = kg;
-    }
-
-    public Integer getLb() {
-        return lb;
-    }
-
-    public void setLb(Integer lb) {
-        this.lb = lb;
-    }
-
-    public RocketJpa getRocket() {
-        return rocket;
-    }
-
-    public void setRocket(RocketJpa rocket) {
-        this.rocket = rocket;
-    }
 }

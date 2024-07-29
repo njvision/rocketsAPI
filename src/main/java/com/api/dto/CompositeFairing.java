@@ -8,6 +8,8 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class CompositeFairing {
 
     @JsonProperty("height")
@@ -15,20 +17,4 @@ public class CompositeFairing {
 
     @JsonProperty("diameter")
     private DimensionRocket diameter;
-
-    public DimensionRocket getHeight() {
-        return height;
-    }
-
-    public void setHeight(DimensionRocket height) {
-        this.height = height;
-    }
-
-    public DimensionRocket getDiameter() {
-        return diameter;
-    }
-
-    public void setDiameter(DimensionRocket diameter) {
-        this.diameter = diameter;
-    }
 }
