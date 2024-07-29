@@ -5,6 +5,9 @@ import com.api.mapper.RocketJpaMapper;
 import com.api.model.RocketJpa;
 import com.api.repository.RocketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +29,15 @@ public class RocketPersistenceService {
                 .map(rocketJpaMapper::toDto)
                 .collect(Collectors.toList());
 
-        System.out.println(rocketJpa.get(0).getFlickrImages());
         rocketRepository.saveAll(rocketJpa);
+    }
+
+    public List<SxRocket> getRockets(int page, int limit) {
+
+        Pageable pageable = PageRequest.of(page, limit);
+        Page<RocketJpa> rocketJpaPage = rocketRepository.findAll(pageable);
+        return rocketJpaPage.getContent().stream()
+                .map(rocketJpaMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

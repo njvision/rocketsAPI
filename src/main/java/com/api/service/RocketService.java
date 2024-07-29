@@ -22,4 +22,10 @@ public class RocketService {
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public List<RocketDto> getFilteredRockets(List<SxRocket> rockets) {
+        return rockets.stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
+    }
 }
