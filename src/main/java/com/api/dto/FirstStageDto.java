@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class FirstStage {
+public class FirstStageDto {
 
     @JsonProperty("reusable")
     private Boolean reusable;
@@ -25,8 +25,8 @@ public class FirstStage {
     private Integer burnTimeSec;
 
     @JsonProperty("thrust_sea_level")
-    private ThrustStage thrustSeaLevel;
+    private ThrustStageDto thrustSeaLevel;
 
     @JsonProperty("thrust_vacuum")
-    private ThrustStage thrustVacuum;
+    private ThrustStageDto thrustVacuum;
 }

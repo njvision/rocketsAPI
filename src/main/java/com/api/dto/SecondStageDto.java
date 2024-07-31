@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class SecondStage {
+public class SecondStageDto {
 
     @JsonProperty("engines")
     private Integer engines;
@@ -22,8 +22,8 @@ public class SecondStage {
     private Integer burnTimeSec;
 
     @JsonProperty("thrust")
-    private ThrustStage thrust;
+    private ThrustStageDto thrust;
 
     @JsonProperty("payloads")
-    private Payloads payloads;
+    private PayloadsDto payloads;
 }

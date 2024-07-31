@@ -10,11 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Payloads {
+public class DimensionRocketDto {
 
-    @JsonProperty("option_1")
-    private String option1;
+    @JsonProperty("meters")
+    private Double meters;
 
-    @JsonProperty("composite_fairing")
-    private CompositeFairing compositeFairing;
+    @JsonProperty("feet")
+    private Double feet;
 }

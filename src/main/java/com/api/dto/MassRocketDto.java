@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class MassRocket {
+public class MassRocketDto {
 
     @JsonProperty("kg")
     private Integer kg;

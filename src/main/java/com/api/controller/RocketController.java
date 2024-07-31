@@ -1,11 +1,7 @@
 package com.api.controller;
 
-import com.api.config.PaginationProperties;
 import com.api.dto.RocketDto;
-import com.api.entity.SxRocket;
-import com.api.service.RocketPersistenceService;
 import com.api.service.RocketPresenter;
-import com.api.service.RocketService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +15,9 @@ import java.util.List;
 public class RocketController {
 
     private final RocketPresenter rocketPresenter;
-    private final RocketPersistenceService rocketPersistenceService;
-    private final RocketService rocketService;
-    private final PaginationProperties paginationProperties;
 
-    public RocketController(RocketPresenter rocketPresenter, RocketPersistenceService rocketPersistenceService, RocketService rocketService, PaginationProperties paginationProperties) {
+    public RocketController(RocketPresenter rocketPresenter) {
         this.rocketPresenter = rocketPresenter;
-        this.rocketPersistenceService = rocketPersistenceService;
-        this.rocketService = rocketService;
-        this.paginationProperties = paginationProperties;
     }
 
     @GetMapping
@@ -37,27 +27,15 @@ public class RocketController {
             @RequestParam(value = "offset", required = false) Integer offsetParam
     ) {
 
-        List<RocketDto> rocketDtoList = rocketPresenter.getAllRockets(idParam, limitParam, offsetParam);
-        List<SxRocket> sxRocketList = rocketService.getRockets(rocketDtoList);
-        rocketPersistenceService.saveRockets(sxRocketList);
-        return rocketDtoList;
+        return rocketPresenter.getAllRockets(idParam, limitParam, offsetParam);
     }
 
     @GetMapping("/filter")
     public List<RocketDto> getRockets(
             @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "limit", defaultValue = "10") int limit,
-            @RequestParam(value = "offset", defaultValue = "0") int offset) {
+            @RequestParam(value = "limit", defaultValue = "10") int limit) {
 
-        if (offset > 0) {
-            page = offset / limit;
-        }
-
-        page = Math.max(0, page);
-        limit = Math.max(1, limit);
-
-        List<SxRocket> sxRocketList = rocketPersistenceService.getRockets(page, limit);
-        return rocketService.getFilteredRockets(sxRocketList);
+        return rocketPresenter.getFilteredRockets(page, limit);
     }
 
     @GetMapping("/{rocket_id}")

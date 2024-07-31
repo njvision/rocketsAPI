@@ -1,10 +1,9 @@
 package com.api.service;
 
-import com.api.entity.SxRocket;
-import com.api.mapper.RocketJpaMapper;
+import com.api.dto.RocketDto;
+import com.api.mapper.JPARocketMapper;
 import com.api.model.RocketJpa;
 import com.api.repository.RocketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,28 +15,28 @@ import java.util.stream.Collectors;
 @Service
 public class RocketPersistenceService {
 
-    private final RocketJpaMapper rocketJpaMapper;
+    private final JPARocketMapper JPARocketMapper;
     private final RocketRepository rocketRepository;
 
-    public RocketPersistenceService(RocketJpaMapper rocketJpaMapper, RocketRepository rocketRepository) {
-        this.rocketJpaMapper = rocketJpaMapper;
+    public RocketPersistenceService(JPARocketMapper JPARocketMapper, RocketRepository rocketRepository) {
+        this.JPARocketMapper = JPARocketMapper;
         this.rocketRepository = rocketRepository;
     }
 
-    public void saveRockets (List<SxRocket> rockets) {
+    public void saveRockets (List<RocketDto> rockets) {
         List<RocketJpa> rocketJpa = rockets.stream()
-                .map(rocketJpaMapper::toDto)
+                .map(JPARocketMapper::toDto)
                 .collect(Collectors.toList());
 
         rocketRepository.saveAll(rocketJpa);
     }
 
-    public List<SxRocket> getRockets(int page, int limit) {
+    public List<RocketDto> getRockets(int page, int limit) {
 
         Pageable pageable = PageRequest.of(page, limit);
         Page<RocketJpa> rocketJpaPage = rocketRepository.findAll(pageable);
         return rocketJpaPage.getContent().stream()
-                .map(rocketJpaMapper::toDto)
+                .map(JPARocketMapper::toDto)
                 .collect(Collectors.toList());
     }
 }

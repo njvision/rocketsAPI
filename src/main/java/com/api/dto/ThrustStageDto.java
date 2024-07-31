@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ThrustStage {
+public class ThrustStageDto {
 
     @JsonProperty("kN")
     private Integer kn;

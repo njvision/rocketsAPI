@@ -1,12 +1,5 @@
 package com.api.entity;
 
-import com.api.dto.DimensionRocket;
-import com.api.dto.Engines;
-import com.api.dto.FirstStage;
-import com.api.dto.LandingLegs;
-import com.api.dto.MassRocket;
-import com.api.dto.PayloadWeights;
-import com.api.dto.SecondStage;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

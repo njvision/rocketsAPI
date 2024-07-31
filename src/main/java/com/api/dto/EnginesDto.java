@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Engines {
+public class EnginesDto {
 
     @JsonProperty("number")
     private Integer number;
@@ -25,7 +25,7 @@ public class Engines {
     private String layout;
 
     @JsonProperty("isp")
-    private Isp isp;
+    private IspDto isp;
 
     @JsonProperty("engine_loss_max")
     private Integer engineLossMax;
@@ -37,10 +37,10 @@ public class Engines {
     private String propellant2;
 
     @JsonProperty("thrust_sea_level")
-    private ThrustStage thrustSeaLevel;
+    private ThrustStageDto thrustSeaLevel;
 
     @JsonProperty("thrust_vacuum")
-    private ThrustStage thrustVacuum;
+    private ThrustStageDto thrustVacuum;
 
     @JsonProperty("thrust_to_weight")
     private Integer thrustToWeight;

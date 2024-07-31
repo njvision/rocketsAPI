@@ -10,11 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Isp {
+public class LandingLegsDto {
 
-    @JsonProperty("sea_level")
-    private Integer seaLevel;
+    @JsonProperty("number")
+    private Integer number;
 
-    @JsonProperty("vacuum")
-    private Integer vacuum;
+    @JsonProperty("material")
+    private String material;
 }

@@ -1,6 +1,5 @@
 package com.api.entity;
 
-import com.api.dto.DimensionRocket;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

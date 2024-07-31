@@ -33,9 +33,6 @@ public class RocketJpa {
     @Column(name = "id")
     private Integer id;
 
-//    @Column(name = "_id")
-//    public String _id;
-
     @Column(name = "active")
     private Boolean active;
 

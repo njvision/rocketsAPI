@@ -10,11 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CompositeFairing {
+public class IspDto {
 
-    @JsonProperty("height")
-    private DimensionRocket height;
+    @JsonProperty("sea_level")
+    private Integer seaLevel;
 
-    @JsonProperty("diameter")
-    private DimensionRocket diameter;
+    @JsonProperty("vacuum")
+    private Integer vacuum;
 }

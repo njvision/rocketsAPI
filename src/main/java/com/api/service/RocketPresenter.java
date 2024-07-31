@@ -3,7 +3,6 @@ package com.api.service;
 import com.api.dto.RocketDto;
 import com.api.entity.SxRocket;
 import com.api.mapper.RocketMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +14,12 @@ public class RocketPresenter {
 
     private final NetworkingService networkingService;
     private final RocketMapper rocketMapper;
+    private final RocketPersistenceService rocketPersistenceService;
 
-    public RocketPresenter(NetworkingService networkingService, RocketMapper rocketMapper) {
+    public RocketPresenter(NetworkingService networkingService, RocketMapper rocketMapper, RocketPersistenceService rocketPersistenceService) {
         this.networkingService = networkingService;
         this.rocketMapper = rocketMapper;
+        this.rocketPersistenceService = rocketPersistenceService;
     }
 
     public List<RocketDto> getAllRockets(Boolean idParam, Integer limitParam, Integer offsetParam) {
@@ -35,6 +36,7 @@ public class RocketPresenter {
                     .collect(Collectors.toList());
         }
 
+        rocketPersistenceService.saveRockets(rocketDtoList);
         return filterByParams(rocketDtoList, limitParam, offsetParam);
     }
 
@@ -46,6 +48,13 @@ public class RocketPresenter {
         } else {
             return rocketMapper.toDto(rocket);
         }
+    }
+
+    public List<RocketDto> getFilteredRockets(Integer page, Integer limit) {
+        page = Math.max(0, page);
+        limit = Math.max(1, limit);
+
+        return rocketPersistenceService.getRockets(page, limit);
     }
 
     private List<RocketDto> filterByParams(List<RocketDto> rocketList, Integer limitParam, Integer offsetParam) {

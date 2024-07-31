@@ -42,28 +42,28 @@ public class RocketDto {
     private String company;
 
     @JsonProperty("height")
-    private DimensionRocket height;
+    private DimensionRocketDto height;
 
     @JsonProperty("diameter")
-    private DimensionRocket diameter;
+    private DimensionRocketDto diameter;
 
     @JsonProperty("mass")
-    private MassRocket mass;
+    private MassRocketDto mass;
 
     @JsonProperty("payload_weights")
-    private List<PayloadWeights> payloadWeights;
+    private List<PayloadWeightsDto> payloadWeights;
 
     @JsonProperty("first_stage")
-    private FirstStage firstStage;
+    private FirstStageDto firstStage;
 
     @JsonProperty("second_stage")
-    private SecondStage secondStage;
+    private SecondStageDto secondStage;
 
     @JsonProperty("engines")
-    private Engines engines;
+    private EnginesDto engines;
 
     @JsonProperty("landing_legs")
-    private LandingLegs landingLegs;
+    private LandingLegsDto landingLegs;
 
     @JsonProperty("flickr_images")
     private List<String> flickrImages;

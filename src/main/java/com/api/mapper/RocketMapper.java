@@ -1,19 +1,19 @@
 package com.api.mapper;
 
-import com.api.dto.CompositeFairing;
-import com.api.dto.DimensionRocket;
-import com.api.dto.Engines;
-import com.api.dto.FirstStage;
-import com.api.dto.FlickrImages;
-import com.api.dto.Isp;
-import com.api.dto.LandingLegs;
-import com.api.dto.MassRocket;
-import com.api.dto.PayloadWeights;
-import com.api.dto.Payloads;
+import com.api.dto.CompositeFairingDto;
+import com.api.dto.DimensionRocketDto;
+import com.api.dto.EnginesDto;
+import com.api.dto.FirstStageDto;
+import com.api.dto.FlickrImagesDto;
+import com.api.dto.IspDto;
+import com.api.dto.LandingLegsDto;
+import com.api.dto.MassRocketDto;
+import com.api.dto.PayloadWeightsDto;
+import com.api.dto.PayloadsDto;
 import com.api.dto.RocketDto;
 import com.api.dto.RocketMongoIdDto;
-import com.api.dto.SecondStage;
-import com.api.dto.ThrustStage;
+import com.api.dto.SecondStageDto;
+import com.api.dto.ThrustStageDto;
 import com.api.entity.SxCompositeFairing;
 import com.api.entity.SxDimensionRocket;
 import com.api.entity.SxEngines;
@@ -28,64 +28,34 @@ import com.api.entity.SxRocket;
 import com.api.entity.SxSecondStage;
 import com.api.entity.SxThrustStage;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface RocketMapper {
     RocketDto toDto(SxRocket sxRocket);
 
-    SxRocket toDto(RocketDto sxRocket);
-
     RocketMongoIdDto toDtoRocketMongoId(SxRocket sxRocketMongoId);
 
-    SxRocket toDtoRocketMongoId(RocketMongoIdDto sxRocketMongoId);
+    DimensionRocketDto toDto(SxDimensionRocket dimensionRocket);
 
-    DimensionRocket toDto(SxDimensionRocket dimensionRocket);
+    MassRocketDto toDto(SxMassRocket massRocket);
 
-    SxDimensionRocket toDto(DimensionRocket dimensionRocket);
+    PayloadWeightsDto toDto(SxPayloadWeights payloadWeights);
 
-    MassRocket toDto(SxMassRocket massRocket);
+    FirstStageDto toDto(SxFirstStage firstStage);
 
-    SxMassRocket toDto(MassRocket massRocket);
+    SecondStageDto toDto(SxSecondStage secondStage);
 
-    PayloadWeights toDto(SxPayloadWeights payloadWeights);
+    EnginesDto toDto(SxEngines engines);
 
-    SxPayloadWeights toDto(PayloadWeights payloadWeights);
+    LandingLegsDto toDto(SxLandingLegs landingLegs);
 
-    FirstStage toDto(SxFirstStage firstStage);
+    IspDto toDto(SxIsp isp);
 
-    SxFirstStage toDto(FirstStage firstStage);
+    ThrustStageDto toDto(SxThrustStage thrustEngines);
 
-    SecondStage toDto(SxSecondStage secondStage);
+    PayloadsDto toDto(SxPayloads payloads);
 
-    SxSecondStage toDto(SecondStage secondStage);
+    CompositeFairingDto toDto(SxCompositeFairing compositeFairing);
 
-    Engines toDto(SxEngines engines);
-
-    SxEngines toDto(Engines engines);
-
-    LandingLegs toDto(SxLandingLegs landingLegs);
-
-    SxLandingLegs toDto(LandingLegs landingLegs);
-
-    Isp toDto(SxIsp isp);
-
-    SxIsp toDto(Isp isp);
-
-    ThrustStage toDto(SxThrustStage thrustEngines);
-
-    SxThrustStage toDto(ThrustStage thrustEngines);
-
-    Payloads toDto(SxPayloads payloads);
-
-    SxPayloads toDto(Payloads payloads);
-
-    CompositeFairing toDto(SxCompositeFairing compositeFairing);
-
-    SxCompositeFairing toDto(CompositeFairing compositeFairing);
-
-    FlickrImages toDto(SxFlickrImages flickrImages);
-
-    SxFlickrImages toDto(FlickrImages flickrImages);
+    FlickrImagesDto toDto(SxFlickrImages flickrImages);
 }

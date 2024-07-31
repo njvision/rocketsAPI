@@ -10,11 +10,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class LandingLegs {
+public class PayloadWeightsDto {
 
-    @JsonProperty("number")
-    private Integer number;
+    @JsonProperty("id")
+    private String payloadId;
 
-    @JsonProperty("material")
-    private String material;
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("kg")
+    private Integer kg;
+
+    @JsonProperty("lb")
+    private Integer lb;
 }
