@@ -1,14 +1,15 @@
 package com.api.entity;
 
-import com.api.dto.ThrustStage;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class SxFirstStage {
     @JsonProperty("reusable")
     private Boolean reusable;

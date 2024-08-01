@@ -4,14 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class FirstStage {
-
-    @JsonProperty("reusable")
-    private Boolean reusable;
+@Setter
+public class SecondStageDto {
 
     @JsonProperty("engines")
     private Integer engines;
@@ -22,9 +21,9 @@ public class FirstStage {
     @JsonProperty("burn_time_sec")
     private Integer burnTimeSec;
 
-    @JsonProperty("thrust_sea_level")
-    private ThrustStage thrustSeaLevel;
+    @JsonProperty("thrust")
+    private ThrustStageDto thrust;
 
-    @JsonProperty("thrust_vacuum")
-    private ThrustStage thrustVacuum;
+    @JsonProperty("payloads")
+    private PayloadsDto payloads;
 }

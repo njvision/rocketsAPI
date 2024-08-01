@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class CompositeFairing {
+@Setter
+public class DimensionRocketDto {
 
-    @JsonProperty("height")
-    private DimensionRocket height;
+    @JsonProperty("meters")
+    private Double meters;
 
-    @JsonProperty("diameter")
-    private DimensionRocket diameter;
+    @JsonProperty("feet")
+    private Double feet;
 }

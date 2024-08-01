@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class MassRocket {
+@Setter
+public class IspDto {
 
-    @JsonProperty("kg")
-    private Integer kg;
+    @JsonProperty("sea_level")
+    private Integer seaLevel;
 
-    @JsonProperty("lb")
-    private Integer lb;
+    @JsonProperty("vacuum")
+    private Integer vacuum;
 }

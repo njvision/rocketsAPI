@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ThrustStage {
+@Setter
+public class LandingLegsDto {
 
-    @JsonProperty("kn")
-    private Integer kn;
+    @JsonProperty("number")
+    private Integer number;
 
-    @JsonProperty("lbf")
-    private Integer lbf;
+    @JsonProperty("material")
+    private String material;
 }

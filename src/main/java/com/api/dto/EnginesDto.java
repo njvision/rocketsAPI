@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class Engines {
+@Setter
+public class EnginesDto {
 
     @JsonProperty("number")
     private Integer number;
@@ -23,7 +25,7 @@ public class Engines {
     private String layout;
 
     @JsonProperty("isp")
-    private Isp isp;
+    private IspDto isp;
 
     @JsonProperty("engine_loss_max")
     private Integer engineLossMax;
@@ -35,10 +37,10 @@ public class Engines {
     private String propellant2;
 
     @JsonProperty("thrust_sea_level")
-    private ThrustStage thrustSeaLevel;
+    private ThrustStageDto thrustSeaLevel;
 
     @JsonProperty("thrust_vacuum")
-    private ThrustStage thrustVacuum;
+    private ThrustStageDto thrustVacuum;
 
     @JsonProperty("thrust_to_weight")
     private Integer thrustToWeight;

@@ -4,14 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class PayloadWeights {
+@Setter
+public class PayloadWeightsDto {
 
     @JsonProperty("id")
-    private String id;
+    private String payloadId;
 
     @JsonProperty("name")
     private String name;

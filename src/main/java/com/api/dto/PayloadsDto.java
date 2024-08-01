@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class Isp {
+@Setter
+public class PayloadsDto {
 
-    @JsonProperty("sea_level")
-    private Integer seaLevel;
+    @JsonProperty("option_1")
+    private String option1;
 
-    @JsonProperty("vacuum")
-    private Integer vacuum;
+    @JsonProperty("composite_fairing")
+    private CompositeFairingDto compositeFairing;
 }

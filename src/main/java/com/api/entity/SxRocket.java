@@ -1,26 +1,21 @@
 package com.api.entity;
 
-import com.api.dto.DimensionRocket;
-import com.api.dto.Engines;
-import com.api.dto.FirstStage;
-import com.api.dto.LandingLegs;
-import com.api.dto.MassRocket;
-import com.api.dto.PayloadWeights;
-import com.api.dto.SecondStage;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public class SxRocket {
 
     @JsonProperty("_id")
-    public String _id;
+    private String _id;
 
     @JsonProperty("id")
     private Integer id;
@@ -50,28 +45,28 @@ public class SxRocket {
     private String company;
 
     @JsonProperty("height")
-    private DimensionRocket height;
+    private SxDimensionRocket height;
 
     @JsonProperty("diameter")
-    private DimensionRocket diameter;
+    private SxDimensionRocket diameter;
 
     @JsonProperty("mass")
-    private MassRocket mass;
+    private SxMassRocket mass;
 
     @JsonProperty("payload_weights")
-    private List<PayloadWeights> payloadWeights;
+    private List<SxPayloadWeights> payloadWeights;
 
     @JsonProperty("first_stage")
-    private FirstStage firstStage;
+    private SxFirstStage firstStage;
 
     @JsonProperty("second_stage")
-    private SecondStage secondStage;
+    private SxSecondStage secondStage;
 
     @JsonProperty("engines")
-    private Engines engines;
+    private SxEngines engines;
 
     @JsonProperty("landing_legs")
-    private LandingLegs landingLegs;
+    private SxLandingLegs landingLegs;
 
     @JsonProperty("flickr_images")
     private List<String> flickrImages;
