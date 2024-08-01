@@ -23,7 +23,7 @@ public class RocketPersistenceService {
         this.rocketRepository = rocketRepository;
     }
 
-    public void saveRockets (List<RocketDto> rockets) {
+    public void saveRockets(List<RocketDto> rockets) {
         List<RocketJpa> rocketJpa = rockets.stream()
                 .map(JPARocketMapper::toDto)
                 .collect(Collectors.toList());
