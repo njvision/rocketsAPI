@@ -1,7 +1,7 @@
 package com.api.controller;
 
 import com.api.dto.RocketDto;
-import com.api.service.RocketPresenter;
+import com.api.presenter.RocketPresenter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
