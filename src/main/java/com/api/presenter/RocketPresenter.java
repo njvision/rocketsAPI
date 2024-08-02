@@ -52,11 +52,12 @@ public class RocketPresenter {
         }
     }
 
-    public List<RocketDto> getFilteredRockets(Integer page, Integer limit) {
+    public List<RocketDto> getFilteredRockets(Integer page, Integer limit, String sortBy, String sortOrder,
+                                              String country, String firstFlightFrom, String firstFlightTo) {
         page = Math.max(0, page);
         limit = Math.max(1, limit);
 
-        return rocketPersistenceService.getRockets(page, limit);
+        return rocketPersistenceService.getRockets(page, limit, sortBy, sortOrder, country, firstFlightFrom, firstFlightTo);
     }
 
     private List<RocketDto> filterByParams(List<RocketDto> rocketList, Integer limitParam, Integer offsetParam) {

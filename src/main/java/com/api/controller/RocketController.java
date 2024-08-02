@@ -33,9 +33,14 @@ public class RocketController {
     @GetMapping("/filter")
     public List<RocketDto> getRockets(
             @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "limit", defaultValue = "10") int limit) {
+            @RequestParam(value = "limit", defaultValue = "10") int limit,
+            @RequestParam(value = "sort", defaultValue = "id") String sortBy,
+            @RequestParam(value = "order", defaultValue = "asc") String sortOrder,
+            @RequestParam(value = "country", required = false) String country,
+            @RequestParam(value = "firstFlightFrom", required = false) String firstFlightFrom,
+            @RequestParam(value = "firstFlightTo", required = false) String firstFlightTo) {
 
-        return rocketPresenter.getFilteredRockets(page, limit);
+        return rocketPresenter.getFilteredRockets(page, limit, sortBy, sortOrder, country, firstFlightFrom, firstFlightTo);
     }
 
     @GetMapping("/{rocket_id}")
