@@ -15,4 +15,6 @@ public @interface PreviousMonthData {
     String message() default "The date must be within the last 30 days";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
+
+    int days() default 30;
 }

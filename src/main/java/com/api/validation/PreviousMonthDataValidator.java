@@ -8,6 +8,14 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class PreviousMonthDataValidator implements ConstraintValidator<PreviousMonthData, String> {
+
+    int days;
+
+    @Override
+    public void initialize(PreviousMonthData constraintAnnotation) {
+        this.days = constraintAnnotation.days();
+    }
+
     @Override
     public boolean isValid(String dateString, ConstraintValidatorContext constraintValidatorContext) {
 
@@ -20,7 +28,7 @@ public class PreviousMonthDataValidator implements ConstraintValidator<PreviousM
             LocalDate date = LocalDate.parse(dateString, formatter);
             LocalDate now = LocalDate.now();
             long daysBetween = ChronoUnit.DAYS.between(date, now);
-            return daysBetween >= 0 && daysBetween <= 30;
+            return daysBetween >= 0 && daysBetween <= days;
         } catch (Exception e) {
             return false;
         }

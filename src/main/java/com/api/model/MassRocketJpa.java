@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +26,13 @@ public class MassRocketJpa {
     @Column(name = "id")
     private Integer id;
 
+    @Min(0)
+    @Max(1000000000)
     @Column(name = "kg")
     private Integer kg;
 
+    @Min(0)
+    @Max(1000000000)
     @Column(name = "lb")
     private Integer lb;
 }
