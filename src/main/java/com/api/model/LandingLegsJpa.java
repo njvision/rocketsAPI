@@ -33,7 +33,6 @@ public class LandingLegsJpa {
     @Column(name = "number")
     private Integer number;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "material")
     private String material;

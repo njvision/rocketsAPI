@@ -40,7 +40,6 @@ public class EnginesJpa {
     @Column(name = "type")
     private String type;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "version")
     private String version;
@@ -59,12 +58,10 @@ public class EnginesJpa {
     @Column(name = "engine_loss_max")
     private Integer engineLossMax;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "propellant_1")
     private String propellant1;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "propellant_2")
     private String propellant2;

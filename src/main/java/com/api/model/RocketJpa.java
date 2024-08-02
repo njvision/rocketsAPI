@@ -61,11 +61,10 @@ public class RocketJpa {
     @Column(name = "success_rate_pct")
     private Integer successRatePct;
 
-    @PreviousMonthData(days = 180)
+//    @PreviousMonthData(days = 600)
     @Column(name = "first_flight")
     private String firstFlight;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "country")
     private String country;
@@ -124,7 +123,6 @@ public class RocketJpa {
     @Column(name = "rocket_id")
     private String rocketId;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "rocket_name")
     private String rocketName;

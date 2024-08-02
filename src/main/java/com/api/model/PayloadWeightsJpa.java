@@ -35,7 +35,6 @@ public class PayloadWeightsJpa {
     @Column(name = "payload_id")
     private String payloadId;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]*$")
     @Size(max = 10000)
     @Column(name = "name")
     private String name;
