@@ -23,6 +23,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
@@ -61,9 +62,9 @@ public class RocketJpa {
     @Column(name = "success_rate_pct")
     private Integer successRatePct;
 
-//    @PreviousMonthData(days = 600)
+    @PreviousMonthData(days = 7300)
     @Column(name = "first_flight")
-    private String firstFlight;
+    private LocalDate firstFlight;
 
     @Size(max = 10000)
     @Column(name = "country")

@@ -114,7 +114,7 @@ CREATE TABLE rocket
     boosters         INT,
     cost_per_launch  INT,
     success_rate_pct INT,
-    first_flight     VARCHAR(255),
+    first_flight     DATE,
     country          VARCHAR(255),
     company          VARCHAR(255),
     height_id        INT,
