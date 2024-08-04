@@ -10,9 +10,22 @@ import java.util.Objects;
 
 public class RocketSpecification {
 
+    //   by id, cost_per_launch, height, mass, stages, country and filter by first_flight from date to date.
+
     public static Specification<RocketJpa> filterById(String id) {
-        return (root, query, criteriaBuilder) ->
-                StringUtils.hasText(id) ? criteriaBuilder.equal(root.get("id"), id) : criteriaBuilder.conjunction();
+        return (root, query, criteriaBuilder) -> {
+            if (StringUtils.hasText(id)) {
+                Integer rocketId;
+                try {
+                    rocketId = Integer.parseInt(id);
+                } catch (NumberFormatException e) {
+                    return criteriaBuilder.conjunction();
+                }
+                return criteriaBuilder.equal(root.get("id"), rocketId);
+            } else {
+                return criteriaBuilder.conjunction();
+            }
+        };
     }
 
     public static Specification<RocketJpa> filterByCountry(String country) {
