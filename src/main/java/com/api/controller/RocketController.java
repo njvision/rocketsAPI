@@ -39,11 +39,12 @@ public class RocketController {
             @RequestParam(value = "id", required = false) String id,
             @RequestParam(value = "country", required = false) String country,
             @RequestParam(value = "costPerLaunch", required = false) String costPerLaunch,
+            @RequestParam(value = "stages", required = false) String stages,
             @RequestParam(value = "firstFlightFrom", required = false) String firstFlightFrom,
             @RequestParam(value = "firstFlightTo", required = false) String firstFlightTo) {
 
         return rocketPresenter.getFilteredRockets(page, limit, sortBy, sortOrder, id, country, costPerLaunch,
-                firstFlightFrom, firstFlightTo);
+                stages, firstFlightFrom, firstFlightTo);
     }
 
     @GetMapping("/{rocket_id}")

@@ -34,7 +34,7 @@ public class RocketPersistenceService {
     }
 
     public List<RocketDto> getRockets(int page, int limit, String sortBy, String sortOrder,
-                                      String id, String country, String costPerLaunch, String firstFlightFrom, String firstFlightTo) {
+                                      String id, String country, String costPerLaunch, String stages, String firstFlightFrom, String firstFlightTo) {
 
         Sort sort = sortOrder.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
         Pageable pageable = PageRequest.of(page, limit, sort);
@@ -42,6 +42,7 @@ public class RocketPersistenceService {
                 RocketSpecification.filterById(id)
                         .and(RocketSpecification.filterByCountry(country))
                         .and(RocketSpecification.filterByCostPerLaunch(costPerLaunch))
+                        .and(RocketSpecification.filterByStages(stages))
                         .and(RocketSpecification.filterByFirstFlight(firstFlightFrom, firstFlightTo)),
                 pageable);
 

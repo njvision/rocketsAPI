@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class RocketSpecification {
 
-    //   by id, cost_per_launch, height, mass, stages, country and filter by first_flight from date to date.
+    //   height, mass,
 
     public static Specification<RocketJpa> filterById(String id) {
         return (root, query, criteriaBuilder) -> {
@@ -34,15 +34,13 @@ public class RocketSpecification {
     }
 
     public static Specification<RocketJpa> filterByCostPerLaunch(String costPerLaunch) {
-        Integer costPerLaunchNumber = StringUtils.hasText(costPerLaunch) ? Integer.parseInt(costPerLaunch) : null;
 
-        return (root, query, criteriaBuilder) -> {
-            if (Objects.nonNull(costPerLaunchNumber)) {
-                return criteriaBuilder.greaterThanOrEqualTo(root.get("costPerLaunch"), costPerLaunchNumber);
-            } else {
-                return criteriaBuilder.conjunction();
-            }
-        };
+        return filterGreaterEqualOrLessEqual(costPerLaunch, "costPerLaunch", "greater");
+    }
+
+    public static Specification<RocketJpa> filterByStages(String stages) {
+
+        return filterGreaterEqualOrLessEqual(stages, "stages", "greater");
     }
 
     public static Specification<RocketJpa> filterByFirstFlight(String firstFlightFrom, String firstFlightTo) {
@@ -58,6 +56,24 @@ public class RocketSpecification {
                 return criteriaBuilder.greaterThanOrEqualTo(root.get("firstFlight"), fromDate);
             } else if (Objects.nonNull(toDate)) {
                 return criteriaBuilder.lessThanOrEqualTo(root.get("firstFlight"), toDate);
+            } else {
+                return criteriaBuilder.conjunction();
+            }
+        };
+    }
+
+    private static Specification<RocketJpa> filterGreaterEqualOrLessEqual(String data, String column, String criteria) {
+        Integer dataNumber = StringUtils.hasText(data) ? Integer.parseInt(data) : null;
+
+        return (root, query, criteriaBuilder) -> {
+            if (Objects.nonNull(dataNumber)) {
+                if (criteria.equals("greater")) {
+                    return criteriaBuilder.greaterThanOrEqualTo(root.get(column), dataNumber);
+                } else if (criteria.equals("less")) {
+                    return criteriaBuilder.lessThanOrEqualTo(root.get(column), dataNumber);
+                } else {
+                    return criteriaBuilder.equal(root.get(column), dataNumber);
+                }
             } else {
                 return criteriaBuilder.conjunction();
             }
