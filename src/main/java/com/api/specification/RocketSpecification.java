@@ -43,6 +43,22 @@ public class RocketSpecification {
         return filterGreaterEqualOrLessEqual(stages, "stages", "greater");
     }
 
+    public static Specification<RocketJpa> filterByHeightMeters(Double metersFrom, Double metersTo) {
+        return filterMetersAndFeet(metersFrom, metersTo, "height", "meters");
+    }
+
+    public static Specification<RocketJpa> filterByHeightFeet(Double feetFrom, Double feetTo) {
+        return filterMetersAndFeet(feetFrom, feetTo, "height", "feet");
+    }
+
+    public static Specification<RocketJpa> filterByDiameterMeters(Double metersFrom, Double metersTo) {
+        return filterMetersAndFeet(metersFrom, metersTo, "diameter", "meters");
+    }
+
+    public static Specification<RocketJpa> filterByDiameterFeet(Double feetFrom, Double feetTo) {
+        return filterMetersAndFeet(feetFrom, feetTo, "diameter", "feet");
+    }
+
     public static Specification<RocketJpa> filterByFirstFlight(String firstFlightFrom, String firstFlightTo) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -74,6 +90,20 @@ public class RocketSpecification {
                 } else {
                     return criteriaBuilder.equal(root.get(column), dataNumber);
                 }
+            } else {
+                return criteriaBuilder.conjunction();
+            }
+        };
+    }
+
+    private static Specification<RocketJpa> filterMetersAndFeet(Double dataFrom, Double dataTo, String criteria, String dataName) {
+        return (root, query, criteriaBuilder) -> {
+            if (Objects.nonNull(dataFrom) && Objects.nonNull(dataTo)) {
+                return criteriaBuilder.between(root.get(criteria).get(dataName), dataFrom, dataTo);
+            } else if (Objects.nonNull(dataFrom)) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get(criteria).get(dataName), dataFrom);
+            } else if (Objects.nonNull(dataTo)) {
+                return criteriaBuilder.lessThanOrEqualTo(root.get(criteria).get(dataName), dataTo);
             } else {
                 return criteriaBuilder.conjunction();
             }

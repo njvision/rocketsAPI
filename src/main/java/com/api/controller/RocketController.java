@@ -40,11 +40,20 @@ public class RocketController {
             @RequestParam(value = "country", required = false) String country,
             @RequestParam(value = "costPerLaunch", required = false) String costPerLaunch,
             @RequestParam(value = "stages", required = false) String stages,
+            @RequestParam(value = "heightMetersFrom", required = false) Double heightMetersFrom,
+            @RequestParam(value = "heightMetersTo", required = false) Double heightMetersTo,
+            @RequestParam(value = "heightFeetFrom", required = false) Double heightFeetFrom,
+            @RequestParam(value = "heightFeetTo", required = false) Double heightFeetTo,
+            @RequestParam(value = "diameterMetersFrom", required = false) Double diameterMetersFrom,
+            @RequestParam(value = "diameterMetersTo", required = false) Double diameterMetersTo,
+            @RequestParam(value = "diameterFeetFrom", required = false) Double diameterFeetFrom,
+            @RequestParam(value = "diameterFeetTo", required = false) Double diameterFeetTo,
             @RequestParam(value = "firstFlightFrom", required = false) String firstFlightFrom,
             @RequestParam(value = "firstFlightTo", required = false) String firstFlightTo) {
 
         return rocketPresenter.getFilteredRockets(page, limit, sortBy, sortOrder, id, country, costPerLaunch,
-                stages, firstFlightFrom, firstFlightTo);
+                stages, heightMetersFrom, heightMetersTo, heightFeetFrom, heightFeetTo, diameterMetersFrom,
+                diameterMetersTo, diameterFeetFrom, diameterFeetTo, firstFlightFrom, firstFlightTo);
     }
 
     @GetMapping("/{rocket_id}")
