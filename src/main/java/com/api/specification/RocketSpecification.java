@@ -10,9 +10,26 @@ import java.util.Objects;
 
 public class RocketSpecification {
 
+    public static Specification<RocketJpa> filterById(String id) {
+        return (root, query, criteriaBuilder) ->
+                StringUtils.hasText(id) ? criteriaBuilder.equal(root.get("id"), id) : criteriaBuilder.conjunction();
+    }
+
     public static Specification<RocketJpa> filterByCountry(String country) {
         return (root, query, criteriaBuilder) ->
                 StringUtils.hasText(country) ? criteriaBuilder.equal(root.get("country"), country) : criteriaBuilder.conjunction();
+    }
+
+    public static Specification<RocketJpa> filterByCostPerLaunch(String costPerLaunch) {
+        Integer costPerLaunchNumber = StringUtils.hasText(costPerLaunch) ? Integer.parseInt(costPerLaunch) : null;
+
+        return (root, query, criteriaBuilder) -> {
+            if (Objects.nonNull(costPerLaunchNumber)) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("costPerLaunch"), costPerLaunchNumber);
+            } else {
+                return criteriaBuilder.conjunction();
+            }
+        };
     }
 
     public static Specification<RocketJpa> filterByFirstFlight(String firstFlightFrom, String firstFlightTo) {

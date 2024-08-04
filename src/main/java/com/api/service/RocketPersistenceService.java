@@ -34,12 +34,14 @@ public class RocketPersistenceService {
     }
 
     public List<RocketDto> getRockets(int page, int limit, String sortBy, String sortOrder,
-                                      String country, String firstFlightFrom, String firstFlightTo) {
+                                      String id, String country, String costPerLaunch, String firstFlightFrom, String firstFlightTo) {
 
         Sort sort = sortOrder.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
         Pageable pageable = PageRequest.of(page, limit, sort);
         Page<RocketJpa> rocketJpaPage = rocketRepository.findAll(
-                RocketSpecification.filterByCountry(country)
+                RocketSpecification.filterById(id)
+                        .and(RocketSpecification.filterByCountry(country))
+                        .and(RocketSpecification.filterByCostPerLaunch(costPerLaunch))
                         .and(RocketSpecification.filterByFirstFlight(firstFlightFrom, firstFlightTo)),
                 pageable);
 
