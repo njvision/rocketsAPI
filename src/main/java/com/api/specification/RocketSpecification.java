@@ -10,8 +10,6 @@ import java.util.Objects;
 
 public class RocketSpecification {
 
-    //   height, mass,
-
     public static Specification<RocketJpa> filterById(String id) {
         return (root, query, criteriaBuilder) -> {
             if (StringUtils.hasText(id)) {
