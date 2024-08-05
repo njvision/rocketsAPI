@@ -32,28 +32,22 @@ public class RocketControllerTest {
 
     @Test
     public void getAllRocketsWithoutParams() throws Exception {
-        RocketDto rocketDto = createRocket(1, "Falcon 9", 2, "United States");
-        List<RocketDto> rocketDtoList = List.of(
-                rocketDto
-        );
+        List<RocketDto> rocketDtoList = createRocket(1, "Falcon 9", 2, "United States");
 
         when(rocketPresenter.getAllRockets(null, null, null)).thenReturn(rocketDtoList);
 
         mockMvc.perform(get("/")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(rocketDto.getId()))
-                .andExpect(jsonPath("$[0].country").value(rocketDto.getCountry()))
-                .andExpect(jsonPath("$[0].stages").value(rocketDto.getStages()))
-                .andExpect(jsonPath("$[0].rocket_name").value(rocketDto.getRocketName()));
+                .andExpect(jsonPath("$[0].id").value(rocketDtoList.get(0).getId()))
+                .andExpect(jsonPath("$[0].country").value(rocketDtoList.get(0).getCountry()))
+                .andExpect(jsonPath("$[0].stages").value(rocketDtoList.get(0).getStages()))
+                .andExpect(jsonPath("$[0].rocket_name").value(rocketDtoList.get(0).getRocketName()));
     }
 
     @Test
     public void getAllRocketsWithParams() throws Exception {
-        RocketDto rocketDto = createRocket(2, "Falcon 3", 3, "Moldova");
-        List<RocketDto> rocketDtoList = List.of(
-                rocketDto
-        );
+        List<RocketDto> rocketDtoList = createRocket(2, "Falcon 3", 3, "Moldova");
 
         when(rocketPresenter.getAllRockets(false, 1, null)).thenReturn(rocketDtoList);
 
@@ -62,18 +56,18 @@ public class RocketControllerTest {
                         .param("limit", "1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(rocketDto.getId()))
-                .andExpect(jsonPath("$[0].country").value(rocketDto.getCountry()))
-                .andExpect(jsonPath("$[0].stages").value(rocketDto.getStages()))
-                .andExpect(jsonPath("$[0].rocket_name").value(rocketDto.getRocketName()));
+                .andExpect(jsonPath("$[0].id").value(rocketDtoList.get(0).getId()))
+                .andExpect(jsonPath("$[0].country").value(rocketDtoList.get(0).getCountry()))
+                .andExpect(jsonPath("$[0].stages").value(rocketDtoList.get(0).getStages()))
+                .andExpect(jsonPath("$[0].rocket_name").value(rocketDtoList.get(0).getRocketName()));
     }
 
-    private RocketDto createRocket(int id, String name, int stages, String country) {
+    private List<RocketDto> createRocket(int id, String name, int stages, String country) {
         RocketDto rocketDto = new RocketDto();
         rocketDto.setId(id);
         rocketDto.setRocketName(name);
         rocketDto.setStages(stages);
         rocketDto.setCountry(country);
-        return rocketDto;
+        return List.of(rocketDto);
     }
 }
