@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,9 +29,11 @@ public class PayloadsJpa {
     @Column(name = "id")
     private Integer id;
 
+    @Size(max = 10000)
     @Column(name = "option_1")
     private String option1;
 
+    @Size(max = 10000)
     @Column(name = "option_2")
     private String option2;
 

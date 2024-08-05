@@ -1,5 +1,6 @@
 package com.api.model;
 
+import com.api.validation.PreviousMonthData;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -12,12 +13,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
@@ -36,24 +42,36 @@ public class RocketJpa {
     @Column(name = "active")
     private Boolean active;
 
+    @Min(0)
+    @Max(1000000000)
     @Column(name = "stages")
     private Integer stages;
 
+    @Min(0)
+    @Max(1000000000)
     @Column(name = "boosters")
     private Integer boosters;
 
+    @Min(0)
+    @Max(1000000000)
     @Column(name = "cost_per_launch")
     private Integer costPerLaunch;
 
+    @Min(0)
+    @Max(100)
     @Column(name = "success_rate_pct")
     private Integer successRatePct;
 
+    @PreviousMonthData(days = 7300)
     @Column(name = "first_flight")
-    private String firstFlight;
+    private LocalDate firstFlight;
 
+    @Size(max = 10000)
     @Column(name = "country")
     private String country;
 
+    @Pattern(regexp = "^[a-zA-Z0-9]*$")
+    @Size(max = 10000)
     @Column(name = "company")
     private String company;
 
@@ -93,18 +111,25 @@ public class RocketJpa {
     @Column(name = "url")
     private List<String> flickrImages;
 
+    @Size(max = 10000)
     @Column(name = "wikipedia", columnDefinition = "TEXT")
     private String wikipedia;
 
+    @Size(max = 10000)
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Pattern(regexp = "^[a-zA-Z0-9]*$")
+    @Size(max = 10000)
     @Column(name = "rocket_id")
     private String rocketId;
 
+    @Size(max = 10000)
     @Column(name = "rocket_name")
     private String rocketName;
 
+    @Pattern(regexp = "^[a-zA-Z0-9]*$")
+    @Size(max = 10000)
     @Column(name = "rocket_type")
     private String rocketType;
 }

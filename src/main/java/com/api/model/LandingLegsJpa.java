@@ -7,6 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +28,12 @@ public class LandingLegsJpa {
     @Column(name = "id")
     private Integer id;
 
+    @Min(0)
+    @Max(1000000000)
     @Column(name = "number")
     private Integer number;
 
+    @Size(max = 10000)
     @Column(name = "material")
     private String material;
 }
